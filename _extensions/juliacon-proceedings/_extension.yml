@@ -1,0 +1,16 @@
+title: Juliacon-proceedings
+author: pat-alt
+version: 1.0.0
+quarto-required: ">=99.9.0"
+contributes:
+  formats:
+    common:
+      toc: true
+      filters:
+        - juliacon-proceedings.lua
+    pdf:
+      include-in-header: header.tex
+      template: paper.tex
+    html:
+      css: styles.css
+
