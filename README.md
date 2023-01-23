@@ -1,41 +1,10 @@
 
-# <%= title %>
+# Quarto for JuliaCon Proceedings
 
-## Creating a New Article
+## Proof-of-Concept
 
-To create a new article using this format:
-
-*TODO*: Replace the `<github-organization>` with your GitHub organization.
-
-```bash
-quarto use template <github-organization>/<%= filesafename %>
-```
-
-This will create a new directory with an example document that uses this format.
-
-## Using with an Existing Document
-
-To add this format to an existing document:
-
-*TODO*: Replace the `<github-organization>` with your GitHub organization.
-
-```bash
-quarto add <github-organization>/<%= filesafename %>
-```
-
-Then, add the format to your document options:
-
-```yaml
-format:
-  <%= filesafename %>-pdf: default
-```    
-
-## Options
-
-*TODO*: If your format has options that can be set via document metadata, describe them.
+This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions [here](https://github.com/JuliaCon/JuliaConSubmission.jl)
 
 ## Example
 
 Here is the source code for a minimal sample document: [template.qmd](template.qmd).
-
-# juliacon-proceedings-quarto

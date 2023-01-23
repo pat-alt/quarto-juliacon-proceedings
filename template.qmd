@@ -25,9 +25,10 @@ abstract: |
 keywords: [template, demo]
 bibliography: bibliography.bib  
 ---
-
-## Introduction {#sec-intro}
+# Introduction {#sec-intro}
 
 *TODO* Create a template that demonstrates the appearance, formatting, layout, and functionality of your format. Learn more about journal formats at <https://quarto.org/docs/journals/>.
 
+## Proof-of-Concept
 
+This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions [here](https://github.com/JuliaCon/JuliaConSubmission.jl)

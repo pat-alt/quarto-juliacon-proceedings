@@ -11,6 +11,10 @@ contributes:
     pdf:
       include-in-header: header.tex
       template: paper.tex
+      format-resources:
+        - juliacon.cls
+        - journal_dat.tex
+        - jlcode.sty
     html:
       css: styles.css
 
