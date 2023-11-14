@@ -9,12 +9,15 @@ contributes:
       filters:
         - juliacon-proceedings.lua
     pdf:
-      include-in-header: header.tex
       template: paper.tex
+      template-partials:
+        - header.tex
+        - journal_dat.tex
       format-resources:
         - juliacon.cls
         - journal_dat.tex
         - jlcode.sty
+        - logojuliacon.pdf
     html:
       css: styles.css
 
