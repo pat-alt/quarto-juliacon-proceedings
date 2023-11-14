@@ -139,7 +139,6 @@
 \def\subsectionfont{\fontfamily{ptm}\fontsize{9}{12}\selectfont} %\mathversion{rmnormal}
 \def\figcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
 \def\subcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
-\def\subcaption#1{{\centering\subcaptionfont#1\par}}
 %
 \def\tablefont{\fontsize{8}{10}\selectfont}%
 \def\tablecaptionfont{\fontsize{9}{11}\selectfont\centering}%
@@ -741,10 +740,13 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 		\footnotesize%
 		\parindent 0pt \noindent
 		{ \section*{General Terms}} \ignorespaces #1{\vspace{-0.75em}}}}
-\def\keywords#1{\gdef\@keywords{\hsize20pc%
-		\parindent 0pt\noindent\ignorespaces%
-		{{\vspace{-0.75em}} \section*{Keywords}} \ignorespaces #1{\vspace{1em}}}}
-%}
+
+% Keywords command
+\providecommand{\JCONkeywords}[1]
+{
+  \small	
+  \section*{Keywords} #1
+}
 
 \def\category#1#2#3{\@ifnextchar
  [{\@category{#1}{#2}{#3}}{\@xcategory{#1}{#2}{#3}}}

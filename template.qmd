@@ -1,34 +1,102 @@
 ---
-title: Juliacon-proceedings Template
+title: Juliacon Proceedings in Quarto
 format:
   juliacon-proceedings-pdf:
     keep-tex: true  
   juliacon-proceedings-html: default
 author:
-  - name: Sarah Malloc
+  - name: Patrick Altmeyer
     affiliations:
-      - name: An Organization
-        department: The Department
-        address: 1 Main St
-        city: Boston
-        country: USA
-        postal-code: 02210-1022
-      - A second affilication
-    orcid: 0000-0000-0000-0000
-    email: sm@example.org
-    url: https://example.org/
-  - name: Eliza Dealloc
-    affiliations:
-      - Another Affiliation
+      - Delft University of Technology
+    orcid: 0000-0003-4726-8613
+    email: p.altmeyer@tudelft.nl
+    url: https://www.paltmeyer.com/
 abstract: |
-  This document is a template demonstrating the Juliacon-proceedings format.
-keywords: [template, demo]
+  This document is a Quarto template demonstrating the `juliacon-proceedings` format.
+year: 2023
+keywords: [Template, Demo, Quarto, JuliaCon]
 bibliography: bibliography.bib  
 ---
+
 # Introduction {#sec-intro}
 
-*TODO* Create a template that demonstrates the appearance, formatting, layout, and functionality of your format. Learn more about journal formats at <https://quarto.org/docs/journals/>.
+This is a template for writing a JuliaCon Proceedings article in Quarto. This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions [here](https://github.com/JuliaCon/JuliaConSubmission.jl).
 
-## Proof-of-Concept
+## What is Quarto?
 
-This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions [here](https://github.com/JuliaCon/JuliaConSubmission.jl)
+[Quarto](https://quarto.org/) makes it easy to write reproducible documents that can be rendered to PDF, HTML, Word and more. It is based on Markdown, which is easy to learn and write. It also supports LaTeX, which is useful for more advanced formatting. As this extension demonstrates, Quarto is also very flexible and can be extended with custom templates and styles. 
+
+## Why Quarto?
+
+By embracing Quarto, JuliaCon Proceedings can set an example for how to write reproducible documents. We would not only make it easier for authors to write their submissions but also open the door for more advanced features such as interactive figures and executable code blocks in HTML documents. 
+
+## About this template
+
+This template is based on the existing [JuliaCon Proceedings LaTeX template](https://github.com/JuliaCon/JuliaConSubmission.jl). 
+
+## How to use this template
+
+> The remainder of this document repeats relevant elements from the [JuliaCon Proceedings LaTeX template].
+
+# The JuliaCon Article Class {#sec-documentclass}
+
+The `juliacon` class file preserves the standard LATEX{} interface such that any document that can be produced using the standard LATEX{} article class can also be produced with the class file.
+
+It is likely that the make up will change after file submission. For this reason, we ask you to ignore details such as slightly long lines, page stretching, or figures falling out of synchronization, as these details can be dealt with at a later stage.
+
+Use should be made of symbolic references (\verb|\ref| ) in order to protect against late changes of order, etc.
+
+# Executable Code
+
+Ideally, we would be able to tab into Quarto's existing support for executable, cross-referenceable code chunks.
+
+> To create cross-referenceable code listings from executable code blocks, use `lst-label` and `lst-cap`. 
+> --- [Quarto Docs](https://quarto.org/docs/prerelease/1.4/crossref.html#cross-referenceable-listings-of-executable-code-blocks)
+
+For example, the following code block will be labeled as `lst-1` and calling `@lst-1` will render as @lst-1. This ensures that things stay up-to-date and potential errors in the code are identified early: as you render your document, the code will be executed and the output will be inserted into the document.
+
+```{julia}
+#| lst-label: lst-1
+#| lst-cap: A listing caption
+#| eval: false
+#| echo: true
+
+using Plots
+
+x = -3.0:0.01:3.0
+y = rand(length(x))
+plot(x, y)
+```
+
+Unfortunately, I don't know how to use the special environment that is already defined for Julia in this context.
+
+# Code Listings
+
+The special environment that is already defined for Julia code can still be used as before.
+
+\begin{verbatim}
+\begin{lstlisting}[
+    language = Julia, 
+    numbers=left, 
+    label={lst:exmplg}, 
+    caption={Example Code Block.}
+]
+using Plots
+
+x = -3.0:0.01:3.0
+y = rand(length(x))
+plot(x, y)
+\end{lstlisting}
+\end{verbatim}
+\begin{lstlisting}[
+    language = Julia, 
+    numbers=left, 
+    label={lst:exmplg}, 
+    caption={Example Code Block.}
+]
+using Plots
+
+x = -3.0:0.01:3.0
+y = rand(length(x))
+plot(x, y)
+\end{lstlisting}
