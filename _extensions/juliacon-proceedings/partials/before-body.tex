@@ -12,9 +12,18 @@ $if(beamer)$
 $else$
 \maketitle
 $endif$
+$endif$
+
+% Abstract
 $if(abstract)$
 \begin{abstract}
 $abstract$
 \end{abstract}
 $endif$
+
+% Keywords
+$if(keywords)$
+\begin{keywords}
+$for(keywords)$$keywords$$sep$, $endfor$
+\end{keywords}
 $endif$
