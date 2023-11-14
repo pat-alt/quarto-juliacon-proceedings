@@ -127,7 +127,7 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Juliacon Proceedings in Quarto},
-  pdfauthor={Patrick Altmeyer; Cynthia C. S. Liem},
+  pdfauthor={Patrick Altmeyer},
   pdfkeywords={Template, Demo, Quarto, JuliaCon},
   colorlinks=true,
   linkcolor={blue},
@@ -140,7 +140,6 @@
 \title{Juliacon Proceedings in Quarto}
 
 \author[1]{Patrick Altmeyer}
-\author[1]{Cynthia C. S. Liem}
 \affil[1]{Delft University of Technology}
 \date{}
 \begin{document}
@@ -158,8 +157,8 @@ This document is a Quarto template demonstrating the
 % Hypersetup
 \hypersetup{
     pdftitle = {Juliacon Proceedings in Quarto},
-    pdfsubject = {JuliaCon 2022 Proceedings},
-    pdfauthor = {Patrick Altmeyer, Cynthia C. S. Liem},
+    pdfsubject = {JuliaCon 2023 Proceedings},
+    pdfauthor = {Patrick Altmeyer},
     pdfkeywords = {Template, Demo, Quarto, JuliaCon},
 }
 
@@ -167,18 +166,57 @@ This document is a Quarto template demonstrating the
 
 \section{Introduction}\label{sec-intro}
 
-\emph{TODO} Create a template that demonstrates the appearance,
-formatting, layout, and functionality of your format. Learn more about
-journal formats at \url{https://quarto.org/docs/journals/}.
-
-\subsection{Proof-of-Concept}\label{proof-of-concept}
-
+This is a template for writing a JuliaCon Proceedings article in Quarto.
 This is a proof-of-concept for how we could use Quarto for JuliaCon
 proceedings. For current submissions, please ignore this repo and follow
 the official instructions
 \href{https://github.com/JuliaCon/JuliaConSubmission.jl}{here}.
 
-\subsection{Executable Code}\label{executable-code}
+\subsection{What is Quarto?}\label{what-is-quarto}
+
+\href{https://quarto.org/}{Quarto} makes it easy to write reproducible
+documents that can be rendered to PDF, HTML, Word and more. It is based
+on Markdown, which is easy to learn and write. It also supports LaTeX,
+which is useful for more advanced formatting. As this extension
+demonstrates, Quarto is also very flexible and can be extended with
+custom templates and styles.
+
+\subsection{Why Quarto?}\label{why-quarto}
+
+By embracing Quarto, JuliaCon Proceedings can set an example for how to
+write reproducible documents. We would not only make it easier for
+authors to write their submissions but also open the door for more
+advanced features such as interactive figures and executable code blocks
+in HTML documents.
+
+\subsection{About this template}\label{about-this-template}
+
+This template is based on the existing
+\href{https://github.com/JuliaCon/JuliaConSubmission.jl}{JuliaCon
+Proceedings LaTeX template}.
+
+\subsection{How to use this template}\label{how-to-use-this-template}
+
+\begin{quote}
+The remainder of this document repeats relevant elements from the
+{[}JuliaCon Proceedings LaTeX template{]}.
+\end{quote}
+
+\section{The JuliaCon Article Class}\label{sec-documentclass}
+
+The \texttt{juliacon} class file preserves the standard LATEX\{\}
+interface such that any document that can be produced using the standard
+LATEX\{\} article class can also be produced with the class file.
+
+It is likely that the make up will change after file submission. For
+this reason, we ask you to ignore details such as slightly long lines,
+page stretching, or figures falling out of synchronization, as these
+details can be dealt with at a later stage.
+
+Use should be made of symbolic references (\verb|\ref| ) in order to
+protect against late changes of order, etc.
+
+\section{Executable Code}\label{executable-code}
 
 Ideally, we would be able to tab into Quarto's existing support for
 executable, cross-referenceable code chunks.
@@ -217,7 +255,7 @@ plot(x, y)
 Unfortunately, I don't know how to use the special environment that is
 already defined for Julia in this context.
 
-\subsection{Code Listings}\label{code-listings}
+\section{Code Listings}\label{code-listings}
 
 The special environment that is already defined for Julia code can still
 be used as before.
