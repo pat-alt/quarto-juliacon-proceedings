@@ -11,6 +11,9 @@ author:
     orcid: 0000-0003-4726-8613
     email: p.altmeyer@tudelft.nl
     url: https://www.paltmeyer.com/
+  - name: Cynthia C. S. Liem
+    affiliations:
+      - Delft University of Technology
 abstract: |
   This document is a Quarto template demonstrating the `juliacon-proceedings` format.
 year: 2022

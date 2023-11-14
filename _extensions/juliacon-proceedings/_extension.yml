@@ -13,6 +13,7 @@ contributes:
       template-partials:
         - "partials/title.tex"
         - "partials/_authors.tex"
+        - "partials/_affiliations.tex"
         - "partials/before-body.tex"
         - "partials/doc-class.tex"
       format-resources:
