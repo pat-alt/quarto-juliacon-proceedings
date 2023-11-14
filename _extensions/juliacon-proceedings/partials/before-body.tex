@@ -23,7 +23,17 @@ $endif$
 
 % Keywords
 $if(keywords)$
-\begin{keywords}
-$for(keywords)$$keywords$$sep$, $endfor$
-\end{keywords}
+\JCONkeywords{$for(keywords)$$keywords$$sep$, $endfor$}
 $endif$
+
+% Hypersetup
+\hypersetup{
+    pdftitle = {$title$},
+    pdfsubject = {JuliaCon $year$ Proceedings},
+    pdfauthor = {$for(author)$$author$$sep$, $endfor$},
+    pdfkeywords = {$for(keywords)$$keywords$$sep$, $endfor$},
+}
+
+\setcounter{page}{1}
+
+

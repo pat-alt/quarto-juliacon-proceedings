@@ -166,9 +166,9 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Juliacon-proceedings Template},
+  pdftitle={Juliacon Proceedings in Quarto},
   pdfauthor={Patrick Altmeyer},
-  pdfkeywords={template, demo},
+  pdfkeywords={Template, Demo, Quarto, JuliaCon},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -177,9 +177,9 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{Juliacon-proceedings Template}
+\title{Juliacon Proceedings in Quarto}
 \author{
-Patrick Altmeyer~\orcidlink{0000-0000-0000-0000}\\Delft University of
+Patrick Altmeyer~\orcidlink{0000-0003-4726-8613}\\Delft University of
 Technology\\\href{mailto:p.altmeyer@tudelft.nl}{p.altmeyer@tudelft.nl}}
 \date{}
 \begin{document}
@@ -187,14 +187,23 @@ Technology\\\href{mailto:p.altmeyer@tudelft.nl}{p.altmeyer@tudelft.nl}}
 
 % Abstract
 \begin{abstract}
-This document is a template demonstrating the Juliacon-proceedings
-format.
+This document is a Quarto template demonstrating the
+\texttt{juliacon-proceedings} format.
 \end{abstract}
 
 % Keywords
-\begin{keywords}
-template, demo
-\end{keywords}
+\JCONkeywords{Template, Demo, Quarto, JuliaCon}
+
+% Hypersetup
+\hypersetup{
+    pdftitle = {Juliacon Proceedings in Quarto},
+    pdfsubject = {JuliaCon 2022 Proceedings},
+    pdfauthor = {Patrick Altmeyer},
+    pdfkeywords = {Template, Demo, Quarto, JuliaCon},
+}
+
+\setcounter{page}{1}
+
 \section{Introduction}\label{sec-intro}
 
 \emph{TODO} Create a template that demonstrates the appearance,

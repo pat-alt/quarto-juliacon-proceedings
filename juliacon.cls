@@ -740,10 +740,13 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 		\footnotesize%
 		\parindent 0pt \noindent
 		{ \section*{General Terms}} \ignorespaces #1{\vspace{-0.75em}}}}
-\def\keywords#1{\gdef\@keywords{\hsize20pc%
-		\parindent 0pt\noindent\ignorespaces%
-		{{\vspace{-0.75em}} \section*{Keywords}} \ignorespaces #1{\vspace{1em}}}}
-%}
+
+% Keywords command
+\providecommand{\JCONkeywords}[1]
+{
+  \small	
+  \section*{Keywords} #1
+}
 
 \def\category#1#2#3{\@ifnextchar
  [{\@category{#1}{#2}{#3}}{\@xcategory{#1}{#2}{#3}}}
