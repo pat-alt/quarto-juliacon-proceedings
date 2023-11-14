@@ -141,9 +141,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="1.1" class="anchored" data-anchor-id="proof-of-concept"><span class="header-section-number">1.1</span> Proof-of-Concept</h2>
 <p>This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions <a href="https://github.com/JuliaCon/JuliaConSubmission.jl">here</a>.</p>
 </section>
-<section id="code" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="code"><span class="header-section-number">1.2</span> Code</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">println</span>(<span class="st">"Hello, world!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="executable-code" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="executable-code"><span class="header-section-number">1.2</span> Executable Code</h2>
+<p>Ideally, we would be able to tab into Quarto’s existing support for executable, cross-referenceable code chunks.</p>
+<blockquote class="blockquote">
+<p>To create cross-referenceable code listings from executable code blocks, use <code>lst-label</code> and <code>lst-cap</code>. — <a href="https://quarto.org/docs/prerelease/1.4/crossref.html#cross-referenceable-listings-of-executable-code-blocks">Quarto Docs</a></p>
+</blockquote>
+<p>For example, the following code block will be labeled as <code>lst-1</code> and calling <code>@lst-1</code> will render as <a href="#lst-1" class="quarto-xref">Listing&nbsp;1</a>. This ensures that things stay up-to-date and potential errors in the code are identified early: as you render your document, the code will be executed and the output will be inserted into the document.</p>
+<div id="eb21ffb8" class="cell" data-execution_count="1">
+<div id="lst-1" class="julia cell-code listing">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="listing quarto-float-caption quarto-float-lst" id="lst-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;1: A listing caption
+</figcaption>
+<div aria-describedby="lst-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code" id="lst-1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="lst-1-1"><a href="#lst-1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="lst-1-2"><a href="#lst-1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-1-3"><a href="#lst-1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">3.0</span></span>
+<span id="lst-1-4"><a href="#lst-1-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">length</span>(x))</span>
+<span id="lst-1-5"><a href="#lst-1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+</div>
+<p>Unfortunately, I don’t know how to use the special environment that is already defined for Julia in this context.</p>
+</section>
+<section id="code-listings" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="code-listings"><span class="header-section-number">1.3</span> Code Listings</h2>
+<p>The special environment that is already defined for Julia code can still be used as before.</p>
 </section>
 </section>
 
