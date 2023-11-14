@@ -9,15 +9,19 @@ contributes:
       filters:
         - juliacon-proceedings.lua
     pdf:
-      template: paper.tex
       template-partials:
-        - header.tex
-        - journal_dat.tex
+        - "partials/title.tex"
+        - "partials/_authors.tex"
+        - "partials/doc-class.tex"
       format-resources:
         - juliacon.cls
         - journal_dat.tex
         - jlcode.sty
         - logojuliacon.pdf
+        # Content to add in header that your format is using
+      header-includes: |
+        \usepackage{orcidlink}
+        \definecolor{mypink}{RGB}{219, 48, 122}
     html:
       css: styles.css
 
