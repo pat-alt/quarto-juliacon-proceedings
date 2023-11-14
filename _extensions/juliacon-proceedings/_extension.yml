@@ -5,7 +5,8 @@ quarto-required: ">=99.9.0"
 contributes:
   formats:
     common:
-      toc: true
+      toc: false
+      number-sections: true
       filters:
         - juliacon-proceedings.lua
     pdf:
