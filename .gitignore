@@ -1,3 +1,5 @@
 /template.*
 /comment.cut
 /.luarc.json
+
+/.quarto/
