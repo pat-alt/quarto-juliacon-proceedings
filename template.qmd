@@ -12,11 +12,18 @@ author:
     email: p.altmeyer@tudelft.nl
     url: https://www.paltmeyer.com/
 abstract: |
-  This document is a Quarto template demonstrating the `juliacon-proceedings` format.
-year: 2023
+  This document is a template demonstrating the `juliacon-proceedings` format. It is a standard Quarto document composed of Markdown, LaTeX and code chunks. It is rendered to PDF and HTML. The PDF is rendered using the `juliacon-proceedings-pdf` format, which is based on the `juliacon-proceedings` LaTeX class. The HTML is rendered using the `juliacon-proceedings-html` format, which is based on the `juliacon-proceedings` HTML template.
 keywords: [Template, Demo, Quarto, JuliaCon]
 bibliography: bibliography.bib  
+jupyter: julia-1.9
 ---
+
+```{julia}
+#| echo: false
+#| output: false
+
+using Pkg; Pkg.activate(".")
+```
 
 # Introduction {#sec-intro}
 
@@ -58,14 +65,12 @@ For example, the following code block will be labeled as `lst-1` and calling `@l
 ```{julia}
 #| lst-label: lst-1
 #| lst-cap: A listing caption
-#| eval: false
 #| echo: true
 
 using Plots
 
 x = -3.0:0.01:3.0
-y = rand(length(x))
-plot(x, y)
+y = rand(length(x));
 ```
 
 Unfortunately, I don't know how to use the special environment that is already defined for Julia in this context.

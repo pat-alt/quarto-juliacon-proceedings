@@ -9,6 +9,8 @@ contributes:
       number-sections: true
       filters:
         - juliacon-proceedings.lua
+      code-line-numbers: true
+      linestretch: 1
     pdf:
       template-partials:
         - "partials/title.tex"
@@ -25,6 +27,7 @@ contributes:
       header-includes: |
         \usepackage{orcidlink}
         \definecolor{mypink}{RGB}{219, 48, 122}
+      pdf-engine: latexmk
     html:
       css: styles.css
 

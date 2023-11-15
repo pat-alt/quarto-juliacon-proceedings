@@ -17,6 +17,7 @@ $endif$
 % Abstract
 $if(abstract)$
 \begin{abstract}
+
 $abstract$
 \end{abstract}
 $endif$
@@ -29,7 +30,7 @@ $endif$
 % Hypersetup
 \hypersetup{
     pdftitle = {$title$},
-    pdfsubject = {JuliaCon $year$ Proceedings},
+    pdfsubject = {JuliaCon \@year Proceedings},
     pdfauthor = {$for(author)$$author$$sep$, $endfor$},
     pdfkeywords = {$for(keywords)$$keywords$$sep$, $endfor$},
 }
