@@ -70,7 +70,8 @@ For example, the following code block will be labeled as `lst-1` and calling `@l
 using Plots
 
 x = -3.0:0.01:3.0
-y = rand(length(x));
+y = rand(length(x))
+plot(x, y)
 ```
 
 Unfortunately, I don't know how to use the special environment that is already defined for Julia in this context.
