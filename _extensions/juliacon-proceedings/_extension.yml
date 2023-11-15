@@ -9,6 +9,7 @@ contributes:
       number-sections: true
       filters:
         - juliacon-proceedings.lua
+      code-line-numbers: true
     pdf:
       template-partials:
         - "partials/title.tex"

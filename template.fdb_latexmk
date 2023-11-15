@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1699971458 "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" "template.pdf" "template" 1699971459 1
-  "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" 1699971457 8801 9fcd5757bed48b3333f7885a92dcde51 ""
+["pdflatex"] 1700037545 "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" "template.pdf" "template" 1700037546 0
+  "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" 1700037544 8802 08f54b7e8ced8ff7447d3eb4aebf4602 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
@@ -210,7 +210,6 @@
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def" 1678741534 48246 c3eed060aba663f58af3ff756e83f2bd ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg" 1678741534 26842 05a01d67d23e805520393a049533b8c0 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty" 1678741534 98531 f79ec363f3014ada2cb766715926ecc9 ""
-  "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-LatinModernRoman.cfg" 1678227641 10002 abab65ab25cece5efd60c5e9e4f83796 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-cmr.cfg" 1678741534 22906 7a8d9f8766e60f694cdde7648421c2ab ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg" 1678741534 5929 0e1d31c98c10fece90f470d5746ecdd6 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg" 1678741534 5594 45ca1ba048c2fa6267d5419cc463d804 ""
@@ -248,10 +247,10 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "jlcode.sty" 1699950169 18246 d33ccf865c532e11b9480876a6bb58b2 ""
   "journal_dat.tex" 1699971445 150 4281908cbdc15e71918b51b1dfcd42f9 ""
-  "juliacon.cls" 1699967691 30253 edf62ebd5fd52daed054c39009cd21e4 ""
+  "juliacon.cls" 1700037520 30331 ecd9c7f09aa9f048a16b9ccffe6ce0ba ""
   "logojuliacon.pdf" 1699950169 4937 0cb75c4e65b0cf72a69c7716f140efe5 ""
-  "template.aux" 1699971459 4697 2b73953208709719e949a5829ae8414b "pdflatex"
-  "template.tex" 1699971457 8801 9fcd5757bed48b3333f7885a92dcde51 ""
+  "template.aux" 1700037546 4697 d72ba098f500933fe93ac99dbfd5cd4d "pdflatex"
+  "template.tex" 1700037544 8802 08f54b7e8ced8ff7447d3eb4aebf4602 ""
   (generated)
   "template.aux"
   "template.log"
