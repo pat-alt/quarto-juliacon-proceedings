@@ -27,6 +27,7 @@ contributes:
       header-includes: |
         \usepackage{orcidlink}
         \definecolor{mypink}{RGB}{219, 48, 122}
+      pdf-engine: latexmk
     html:
       css: styles.css
 
