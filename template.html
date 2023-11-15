@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This document is a Quarto template demonstrating the <code>juliacon-proceedings</code> format.</p>
+    <p>This document is a template demonstrating the <code>juliacon-proceedings</code> format. It is a standard Quarto document composed of Markdown, LaTeX and code chunks. It is rendered to PDF and HTML. The PDF is rendered using the <code>juliacon-proceedings-pdf</code> format, which is based on the <code>juliacon-proceedings</code> LaTeX class. The HTML is rendered using the <code>juliacon-proceedings-html</code> format, which is based on the <code>juliacon-proceedings</code> HTML template.</p>
   </div>
 </div>
 
@@ -160,7 +160,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To create cross-referenceable code listings from executable code blocks, use <code>lst-label</code> and <code>lst-cap</code>. — <a href="https://quarto.org/docs/prerelease/1.4/crossref.html#cross-referenceable-listings-of-executable-code-blocks">Quarto Docs</a></p>
 </blockquote>
 <p>For example, the following code block will be labeled as <code>lst-1</code> and calling <code>@lst-1</code> will render as <a href="#lst-1" class="quarto-xref">Listing&nbsp;1</a>. This ensures that things stay up-to-date and potential errors in the code are identified early: as you render your document, the code will be executed and the output will be inserted into the document.</p>
-<div id="1af4b3c1" class="cell" data-execution_count="1">
+<div id="801275ff" class="cell" data-execution_count="2">
 <div id="lst-1" class="julia cell-code listing">
 <figure class="quarto-float quarto-float-lst figure">
 <figcaption class="listing quarto-float-caption quarto-float-lst" id="lst-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -170,8 +170,7 @@ Listing&nbsp;1: A listing caption
 <div class="sourceCode cell-code" id="lst-1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="lst-1-1"><a href="#lst-1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
 <span id="lst-1-2"><a href="#lst-1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="lst-1-3"><a href="#lst-1-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="op">-</span><span class="fl">3.0</span><span class="op">:</span><span class="fl">0.01</span><span class="op">:</span><span class="fl">3.0</span></span>
-<span id="lst-1-4"><a href="#lst-1-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">length</span>(x))</span>
-<span id="lst-1-5"><a href="#lst-1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="lst-1-4"><a href="#lst-1-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">length</span>(x));</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </figure>
 </div>
@@ -338,8 +337,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
         }
         typesetMath(container);
         return container.innerHTML

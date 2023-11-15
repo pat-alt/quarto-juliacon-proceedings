@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1700037545 "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" "template.pdf" "template" 1700037546 0
-  "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" 1700037544 8802 08f54b7e8ced8ff7447d3eb4aebf4602 ""
+["pdflatex"] 1700040578 "/Users/paltmeyer/code/quarto-juliacon-proceedings/template.tex" "template.pdf" "template" 1700040579 1
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/times/ptmr8t.tfm" 1136768653 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
@@ -231,6 +230,7 @@
   "/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/times.sty" 1586716065 856 8e0e5c8cca7b18e0400f97f5a2b90a99 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty" 1576624809 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657483315 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
+  "/usr/local/texlive/2023/texmf-dist/tex/latex/setspace/setspace.sty" 1670275497 22490 8cac309b79a4c53a4ffce4b1b07aead0 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/array.sty" 1667332637 12691 5b542990fe866f3d772f71346cf85b95 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/bm.sty" 1654720880 13231 b52297489a0e9d929aae403417d92a02 ""
   "/usr/local/texlive/2023/texmf-dist/tex/latex/tools/calc.sty" 1654720880 10214 de3e21cfc0eccc98ca7f8dac0ef263d2 ""
@@ -247,10 +247,10 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "jlcode.sty" 1699950169 18246 d33ccf865c532e11b9480876a6bb58b2 ""
   "journal_dat.tex" 1699971445 150 4281908cbdc15e71918b51b1dfcd42f9 ""
-  "juliacon.cls" 1700037520 30331 ecd9c7f09aa9f048a16b9ccffe6ce0ba ""
+  "juliacon.cls" 1700038256 30438 3dfb8ced544364fdd543500294ee2437 ""
   "logojuliacon.pdf" 1699950169 4937 0cb75c4e65b0cf72a69c7716f140efe5 ""
-  "template.aux" 1700037546 4697 d72ba098f500933fe93ac99dbfd5cd4d "pdflatex"
-  "template.tex" 1700037544 8802 08f54b7e8ced8ff7447d3eb4aebf4602 ""
+  "template.aux" 1700040579 4697 cf123f58669ba98ef20944899bd42ee1 "pdflatex"
+  "template.tex" 1700040578 9212 b5725452feb9346352d90f46c8bb5f9d ""
   (generated)
   "template.aux"
   "template.log"

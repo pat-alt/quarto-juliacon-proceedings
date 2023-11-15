@@ -10,6 +10,7 @@ contributes:
       filters:
         - juliacon-proceedings.lua
       code-line-numbers: true
+      linestretch: 1
     pdf:
       template-partials:
         - "partials/title.tex"

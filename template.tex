@@ -7,6 +7,7 @@
 \documentclass{juliacon}
 
 \usepackage{amsmath,amssymb}
+\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -148,8 +149,14 @@
 % Abstract
 \begin{abstract}
 
-This document is a Quarto template demonstrating the
-\texttt{juliacon-proceedings} format.
+This document is a template demonstrating the
+\texttt{juliacon-proceedings} format. It is a standard Quarto document
+composed of Markdown, LaTeX and code chunks. It is rendered to PDF and
+HTML. The PDF is rendered using the \texttt{juliacon-proceedings-pdf}
+format, which is based on the \texttt{juliacon-proceedings} LaTeX class.
+The HTML is rendered using the \texttt{juliacon-proceedings-html}
+format, which is based on the \texttt{juliacon-proceedings} HTML
+template.
 \end{abstract}
 
 % Keywords
@@ -158,13 +165,14 @@ This document is a Quarto template demonstrating the
 % Hypersetup
 \hypersetup{
     pdftitle = {Juliacon Proceedings in Quarto},
-    pdfsubject = {JuliaCon 2023 Proceedings},
+    pdfsubject = {JuliaCon \@year Proceedings},
     pdfauthor = {Patrick Altmeyer},
     pdfkeywords = {Template, Demo, Quarto, JuliaCon},
 }
 
 \setcounter{page}{1}
 
+\setstretch{1}
 \section{Introduction}\label{sec-intro}
 
 This is a template for writing a JuliaCon Proceedings article in Quarto.
@@ -245,8 +253,7 @@ and the output will be inserted into the document.
 using Plots
 
 x = -3.0:0.01:3.0
-y = rand(length(x))
-plot(x, y)
+y = rand(length(x));
 \end{verbatim}
 
 }

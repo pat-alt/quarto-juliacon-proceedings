@@ -736,14 +736,14 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 % 	{ \ifvoid\@terms\else\box\@terms\fi
 % 		\@keywords \@juliaconformat\empty}\vskip6pt}
 %
-\def\terms#1{\setbox\@terms=\vbox{\hsize20pc%
-		\footnotesize%
-		\parindent 0pt \noindent
-		{ \section*{General Terms}} \ignorespaces #1{\vspace{-0.75em}}}}
-\def\keywords#1{\gdef\@keywords{\hsize20pc%
-		\parindent 0pt\noindent\ignorespaces%
-		{{\vspace{-0.75em}} \section*{Keywords}} \ignorespaces #1{\vspace{1em}}}}
-%}
+% \def\terms#1{\setbox\@terms=\vbox{\hsize20pc%
+% 		\footnotesize%
+% 		\parindent 0pt \noindent
+% 		{ \section*{General Terms}} \ignorespaces #1{\vspace{-0.75em}}}}
+% \def\keywords#1{\gdef\@keywords{\hsize20pc%
+% 		\parindent 0pt\noindent\ignorespaces%
+% 		{{\vspace{-0.75em}} \section*{Keywords}} \ignorespaces #1{\vspace{1em}}}}
+% %}
 
 % Keywords command
 \providecommand{\JCONkeywords}[1]
