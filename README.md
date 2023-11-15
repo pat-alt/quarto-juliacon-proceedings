@@ -13,4 +13,4 @@ By embracing Quarto, JuliaCon Proceedings can set an example for how to write re
 
 ## About this template
 
-This template is based on the existing [JuliaCon Proceedings LaTeX template](https://github.com/JuliaCon/JuliaConSubmission.jl). The rendered version can be found [here](template.pdf).
+This template is based on the existing [JuliaCon Proceedings LaTeX template](https://github.com/JuliaCon/JuliaConSubmission.jl). The rendered version can be found at [https://www.paltmeyer.com/quarto-juliacon-proceedings/template](https://www.paltmeyer.com/quarto-juliacon-proceedings/template).
