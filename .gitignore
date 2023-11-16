@@ -3,3 +3,5 @@
 /.luarc.json
 
 /.quarto/
+
+.CondaPkg

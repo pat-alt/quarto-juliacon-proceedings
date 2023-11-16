@@ -1,6 +1,8 @@
 
 # Quarto for JuliaCon Proceedings
 
+[![Build Status](https://github.com/pat-alt/quarto-juliacon-proceedings/actions/workflows/render.yml/badge.svg?branch=main)](https://github.com/pat-alt/quarto-juliacon-proceedings/actions/workflows/CI.yml?query=branch%3Amain)
+
 This is a template for writing a JuliaCon Proceedings article in Quarto. This is a proof-of-concept for how we could use Quarto for JuliaCon proceedings. For current submissions, please ignore this repo and follow the official instructions [here](https://github.com/JuliaCon/JuliaConSubmission.jl).
 
 ## About this template
