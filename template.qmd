@@ -66,7 +66,7 @@ format:
 
 There are various options to present code using this template. We could leverage Quarto's existing support for executable, cross-referenceable code. Alternatively, we could use the existing `lstlisting` environment for Julia code.
 
-## Executable Listings  (version $\geq$ 1.4.0)
+## Executable Listings  (version $\geq$ 1.4.0) {#sec-executable-listings}
 
 Relying on Quarto's support for executable listings is the most flexible option as it allows us to use all of Quarto's features. It comes with numerous advantages:
 
@@ -81,13 +81,14 @@ From the [Quarto Docs](https://quarto.org/docs/prerelease/1.4/crossref.html#cros
 > To create cross-referenceable code listings from executable code blocks, use `lst-label` and `lst-cap`. 
 > --- [Quarto Docs](https://quarto.org/docs/prerelease/1.4/crossref.html#cross-referenceable-listings-of-executable-code-blocks)
 
-For example, the following code block will be labeled as `lst-1` and calling `@lst-1` will render as @lst-1. The figure it generates will be labeled as `fig-1` and calling `@fig-1` will render as @fig-1.
+For example, the following code block will be labelled as `lst-1` and calling `@lst-1` will render as @lst-1. The figure it generates will be labelled as `fig-1` and calling `@fig-1` will render as @fig-1.
 
 ```{julia}
 #| lst-label: lst-1
 #| lst-cap: A listing caption.
 #| label: fig-1
 #| fig-cap: A figure caption.
+#| eval: true
 #| echo: true
 
 using Plots
@@ -142,9 +143,9 @@ As with code, there are various options to present tables. Using standard Markdo
 
 ## Markdown Tables
 
-Markdown tables are rendered to LaTeX using the `booktabs` package. This is the recommended way to create tables because it is compatible with various output formats. Tables can be cross-referenced and the table caption will be rendered as a LaTeX table caption. The table generated through the following Markdown syntax is labeled as `tbl-1` and calling `@tbl-1` will render as @tbl-1.
+Markdown tables are rendered to LaTeX using the `booktabs` package. This is the recommended way to create tables because it is compatible with various output formats. Tables can be cross-referenced and the table caption will be rendered as a LaTeX table caption. 
 
-```{.markdown}
+```
 
 | Default | Left | Right | Center |
 |---------|:-----|------:|:------:|
@@ -156,10 +157,50 @@ Markdown tables are rendered to LaTeX using the `booktabs` package. This is the 
 
 ```
 
-| Default | Left | Right | Center |
+<!-- | Default | Left | Right | Center |
 |---------|:-----|------:|:------:|
 | 12      | 12   |    12 |   12   |
 | 123     | 123  |   123 |  123   |
 | 1       | 1    |     1 |   1    |
 
-: Demonstration of pipe table syntax {#tbl-1}
+: Demonstration of pipe table syntax {#tbl-1} -->
+
+::: {.callout-note}
+
+# Current Limitations
+
+This seems to currently mess with executable listing (@sec-executable-listings). 
+
+:::
+
+## LaTeX Tables
+
+Standard LaTeX syntax can also be used to create tables. To use standard Quarto cross-referencing, the LaTeX syntax needs to be wrapped in a `div` with the `tbl` class. The table caption can be added as a paragraph. The following creates @tbl-1 which can be cross-referenced as `@tbl-1`.
+
+```
+::: {#tbl-1}
+
+\begin{tabular}{|l|l|}\hline
+Age & Frequency \\ \hline
+18--25  & 15 \\
+26--35  & 33 \\
+36--45  & 22 \\ \hline
+\end{tabular}
+
+This is a table caption.
+
+:::
+```
+
+::: {#tbl-1}
+
+\begin{tabular}{|l|l|}\hline
+Age & Frequency \\ \hline
+18--25  & 15 \\
+26--35  & 33 \\
+36--45  & 22 \\ \hline
+\end{tabular}
+
+This is a table caption.
+
+:::

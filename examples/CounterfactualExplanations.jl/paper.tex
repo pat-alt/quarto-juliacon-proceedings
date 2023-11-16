@@ -116,6 +116,29 @@
   \small	
   \section*{Keywords} #1
 }
+
+% Two-column table
+% Lifted from https://github.com/quarto-journals/elsevier/blob/main/_extensions/elsevier/partials/_two-column-longtable.tex.
+\usepackage{float}
+\makeatletter
+\let\oldlt\longtable
+\let\endoldlt\endlongtable
+\def\longtable{\@ifnextchar[\longtable@i \longtable@ii}
+\def\longtable@i[#1]{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt[#1]
+}
+\def\longtable@ii{\begin{figure}[H]
+\onecolumn
+\begin{minipage}{0.5\textwidth}
+\oldlt
+}
+\def\endlongtable{\endoldlt
+\end{minipage}
+\twocolumn
+\end{figure}}
+\makeatother
 \usepackage{orcidlink}
 \definecolor{mypink}{RGB}{219, 48, 122}
 \makeatletter
@@ -609,8 +632,6 @@ embedding of a Variational Autoencoder (VAE) (Joshi et al. 2019);
 \emph{Wachter} is the baseline approach that only penalises the distance
 to the original sample (Wachter, Mittelstadt, and Russell 2017).
 
-\onecolumn
-
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
@@ -657,8 +678,6 @@ REVISE (Joshi et al. 2019) & gradient based & latent & yes \\
 Wachter (Wachter, Mittelstadt, and Russell 2017) & gradient based &
 feature & yes \\
 \end{longtable}
-
-\twocolumn
 
 \subsection{Data Catalogue}\label{data-catalogue}
 
