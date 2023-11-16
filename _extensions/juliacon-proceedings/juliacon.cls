@@ -139,7 +139,7 @@
 \def\subsectionfont{\fontfamily{ptm}\fontsize{9}{12}\selectfont} %\mathversion{rmnormal}
 \def\figcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
 \def\subcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
-\def\subcaption#1{{\centering\subcaptionfont#1\par}}
+% \def\subcaption#1{{\centering\subcaptionfont#1\par}}
 %
 \def\tablefont{\fontsize{8}{10}\selectfont}%
 \def\tablecaptionfont{\fontsize{9}{11}\selectfont\centering}%
