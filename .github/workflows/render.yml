@@ -1,3 +1,5 @@
+name: Render 
+
 on:
     push:
         branches: main
@@ -13,6 +15,6 @@ jobs:
             with:
                 # To install LaTeX to build PDF book 
                 tinytex: true 
-                version: 1.3
+                # version: 1.3
           - name: Render Quarto Project
             uses: quarto-dev/quarto-actions/render@v2
