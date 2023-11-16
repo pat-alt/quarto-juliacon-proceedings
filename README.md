@@ -9,7 +9,7 @@ This template is based on the existing [JuliaCon Proceedings LaTeX template](htt
 
 ### More Examples
 
-The `/examples/` folder contains additional examples. Currently, it contains a Quarto version of my JuliaCon Proceedings paper *Explaining Black-Box Models through Counterfactuals*. The rendered [PDF](https://www.paltmeyer.com/quarto-juliacon-proceedings/examples/CounterfactualExplanations.jl/paper.pdf) serves as a comparison to the published [version](https://juliacon.github.io/proceedings-papers/jcon.00130/10.21105.jcon.00130.pdf) of the paper. Remaining differences in formatting need to be sorted out here. If you notice any differences, please open an issue. 
+The `/examples/` folder contains additional examples. Currently, it contains a Quarto version of my JuliaCon Proceedings paper *Explaining Black-Box Models through Counterfactuals*. The rendered [PDF](https://www.paltmeyer.com/quarto-juliacon-proceedings/examples/CounterfactualExplanations.jl/paper.pdf) serves as a comparison to the published [version](https://juliacon.github.io/proceedings-papers/jcon.00130/10.21105.jcon.00130.pdf) of the paper. The remaining differences in formatting need to be sorted out here. If you notice any differences, please open an issue. 
 
 ### Usage
 
