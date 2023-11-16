@@ -44,6 +44,6 @@ jobs:
                 restore-keys: |
                     ${{ runner.os }}-${{ env.cache-name }}-
           - name: Install librsvg
-            run: sudo apt-get install -y librsvg
+            run: sudo apt-get install -y librsvg2-bin
           - name: "Render"
             run: "julia setup_render.jl"
