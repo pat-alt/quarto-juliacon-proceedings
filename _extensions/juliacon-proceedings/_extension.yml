@@ -12,6 +12,7 @@ contributes:
       code-line-numbers: true
       linestretch: 1
     pdf:
+      include-in-header: header.tex
       template-partials:
         - "partials/title.tex"
         - "partials/_authors.tex"
@@ -29,6 +30,7 @@ contributes:
         \definecolor{mypink}{RGB}{219, 48, 122}
       pdf-engine: latexmk
       fontfamily: tgtermes
+      whitespace: none
     html:
       css: styles.css
 

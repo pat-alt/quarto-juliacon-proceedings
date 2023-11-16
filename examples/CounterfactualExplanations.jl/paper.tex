@@ -100,6 +100,12 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+% Keywords command
+\providecommand{\JCONkeywords}[1]
+{
+  \small	
+  \section*{Keywords} #1
+}
 \usepackage{orcidlink}
 \definecolor{mypink}{RGB}{219, 48, 122}
 \makeatletter
@@ -215,7 +221,7 @@ Intelligence, Counterfactual Explanations, Algorithmic Recourse},
 
 \setcounter{page}{1}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, sharp corners, boxrule=0pt, frame hidden, interior hidden, enhanced, breakable]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, interior hidden, enhanced, breakable, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \setstretch{1}
 \hypertarget{sec-intro}{%
