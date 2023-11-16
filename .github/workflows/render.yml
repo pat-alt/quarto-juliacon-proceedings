@@ -1,4 +1,4 @@
-name: Render 
+name: Tests
 
 on:
     push:
