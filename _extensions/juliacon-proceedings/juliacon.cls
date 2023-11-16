@@ -139,6 +139,7 @@
 \def\subsectionfont{\fontfamily{ptm}\fontsize{9}{12}\selectfont} %\mathversion{rmnormal}
 \def\figcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
 \def\subcaptionfont{\fontsize{8}{10}\selectfont\mathversion{normal}}%
+\def\subcaption#1{{\centering\subcaptionfont#1\par}}
 %
 \def\tablefont{\fontsize{8}{10}\selectfont}%
 \def\tablecaptionfont{\fontsize{9}{11}\selectfont\centering}%
@@ -735,7 +736,7 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 {
 	{ \ifvoid\@terms\else\box\@terms\fi
 		\@keywords \@juliaconformat\empty}\vskip6pt}
-
+%
 \def\terms#1{\setbox\@terms=\vbox{\hsize20pc%
 		\footnotesize%
 		\parindent 0pt \noindent
@@ -937,6 +938,11 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 \usepackage{jlcode}
 
 \usepackage{authblk}
+
+% Fixes issue related to listing captions: https://github.com/JuliaCon/JuliaConSubmission.jl/issues/31
+\usepackage{caption}
+\captionsetup[lstlisting]{singlelinecheck=false, margin=0pt}
+\renewcommand\lstlistingname{Code}
 
 \endinput
 
