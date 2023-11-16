@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-99.9.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,6 +25,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -112,12 +113,20 @@ div.csl-indent {
   
 <div>
   <div class="abstract">
-    <div class="abstract-title">Abstract</div>
+    <div class="block-title">Abstract</div>
     <p>We present <code>CounterfactualExplanations.jl</code>: a package for generating Counterfactual Explanations (CE) and Algorithmic Recourse (AR) for black-box models in Julia. CE explain how inputs into a model need to change to yield specific model predictions. Explanations that involve realistic and actionable changes can be used to provide AR: a set of proposed actions for individuals to change an undesirable outcome for the better. In this article, we discuss the usefulness of CE for Explainable Artificial Intelligence and demonstrate the functionality of our package. The package is straightforward to use and designed with a focus on customization and extensibility. We envision it to one day be the go-to place for explaining arbitrary predictive models in Julia through a diverse suite of counterfactual generators.</p>
   </div>
 </div>
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Julia, Explainable Artificial Intelligence, Counterfactual Explanations, Algorithmic Recourse</p>
+  </div>
+</div>
+
 </header>
+
 
 <section id="sec-intro" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
@@ -129,7 +138,7 @@ div.csl-indent {
 <p>In light of all this, a quickly growing body of literature on Explainable Artificial Intelligence (XAI) has emerged. Counterfactual Explanations fall into this broad category. They can help human stakeholders make sense of the systems they develop, use or endure: they explain how inputs into a system need to change for it to produce different decisions. Explainability benefits internal as well as external quality assurance. Explanations that involve plausible and actionable changes can be used for Algorithmic Recourse (AR): they offer the group of principals a way to not only understand their agent’s behaviour but also adjust or react to it.</p>
 <p>The availability of open-source software to explain black-box models through counterfactuals is still limited. Through the work presented here, we aim to close that gap and thereby contribute to broader community efforts towards XAI. We envision this package to one day be the go-to place for Counterfactual Explanations in Julia. Thanks to Julia’s unique support for interoperability with foreign programming languages we believe that this library may also benefit the broader machine learning and data science community.</p>
 <p>Our package provides a simple and intuitive interface to generate CE for many standard classification models trained in Julia, as well as in Python and R. It comes with detailed documentation involving various illustrative example datasets, models and counterfactual generators for binary and multi-class prediction tasks. A carefully designed package architecture allows for a seamless extension of the package functionality through custom generators and models.</p>
-<p>The remainder of this article is structured as follows: <a href="#sec-related">Section&nbsp;2</a> presents related work on XAI as well as a brief overview of the methodological framework underlying CE. <a href="#sec-arch">Section&nbsp;3</a> introduces the Julia package and its high-level architecture. <a href="#sec-use">Section&nbsp;4</a> presents several basic and advanced usage examples. In <a href="#sec-custom">Section&nbsp;5</a> we demonstrate how the package functionality can be customized and extended. To illustrate its practical usability, we explore examples involving real-world data in <a href="#sec-emp">Section&nbsp;6</a>. Finally, we also discuss the current limitations of our package, as well as its future outlook in <a href="#sec-outlook">Section&nbsp;7</a>. <a href="#sec-conclude">Section&nbsp;8</a> concludes.</p>
+<p>The remainder of this article is structured as follows: <a href="#sec-related" class="quarto-xref">Section&nbsp;2</a> presents related work on XAI as well as a brief overview of the methodological framework underlying CE. <a href="#sec-arch" class="quarto-xref">Section&nbsp;3</a> introduces the Julia package and its high-level architecture. <a href="#sec-use" class="quarto-xref">Section&nbsp;4</a> presents several basic and advanced usage examples. In <a href="#sec-custom" class="quarto-xref">Section&nbsp;5</a> we demonstrate how the package functionality can be customized and extended. To illustrate its practical usability, we explore examples involving real-world data in <a href="#sec-emp" class="quarto-xref">Section&nbsp;6</a>. Finally, we also discuss the current limitations of our package, as well as its future outlook in <a href="#sec-outlook" class="quarto-xref">Section&nbsp;7</a>. <a href="#sec-conclude" class="quarto-xref">Section&nbsp;8</a> concludes.</p>
 </section>
 <section id="sec-related" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Background and related work</h1>
@@ -153,8 +162,8 @@ div.csl-indent {
 x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 \tag{2}\]</span></span></p>
 <p>Here <span class="math inline">\(\ell\)</span> denotes some loss function targeting the deviation between the target label and the predicted label and <span class="math inline">\(\lambda\)</span> governs the strength of the complexity penalty. Provided we have gradient access for the black-box model <span class="math inline">\(M\)</span> the solution to this problem can be found through gradient descent. This generic framework lays the foundation for most state-of-the-art approaches to counterfactual search and is also used as the baseline approach in our package. The hyperparameter <span class="math inline">\(\lambda\)</span> is typically tuned through grid search or in some sense pre-determined by the nature of the problem. Conventional choices for <span class="math inline">\(\ell\)</span> include margin-based losses like cross-entropy loss and hinge loss. It is worth pointing out that the loss function is typically computed with respect to logits rather than predicted probabilities, a convention that we have chosen to follow.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>Numerous extensions to this simple approach have been developed since CE were first proposed in 2017 (see <span class="citation" data-cites="verma2020counterfactual">Verma, Dickerson, and Hines (<a href="#ref-verma2020counterfactual" role="doc-biblioref">2020</a>)</span> and <span class="citation" data-cites="karimi2020survey">(<a href="#ref-karimi2020survey" role="doc-biblioref">Karimi, Barthe, et al. 2020</a>)</span> for surveys). The various approaches largely differ in that they use different flavours of search objective defined in <a href="#eq-solution">Equation&nbsp;2</a>. Different penalties are often used to address many of the desirable properties of effective CE that have been set out. These desiderata include: <strong>proximity</strong> — the distance between factual and counterfactual features should be small <span class="citation" data-cites="wachter2017counterfactual">(<a href="#ref-wachter2017counterfactual" role="doc-biblioref">Wachter, Mittelstadt, and Russell 2017</a>)</span>; <strong>actionability</strong> — the proposed recourse should be actionable <span class="citation" data-cites="ustun2019actionable">Poyiadzi et al. (<a href="#ref-poyiadzi2020face" role="doc-biblioref">2020</a>)</span>; <strong>plausibility</strong> — the counterfactual explanation should be plausible to a human <span class="citation" data-cites="joshi2019realistic">Schut et al. (<a href="#ref-schut2021generating" role="doc-biblioref">2021</a>)</span>; <strong>sparsity</strong> — the counterfactual explanation should involve as few individual feature changes as possible <span class="citation" data-cites="schut2021generating">(<a href="#ref-schut2021generating" role="doc-biblioref">Schut et al. 2021</a>)</span>; <strong>robustness</strong> — the counterfactual explanation should be robust to domain and model shifts <span class="citation" data-cites="upadhyay2021robust">(<a href="#ref-upadhyay2021robust" role="doc-biblioref">Upadhyay, Joshi, and Lakkaraju 2021</a>)</span>; <strong>diversity</strong> — ideally multiple diverse counterfactuals should be provided <span class="citation" data-cites="mothilal2020explaining">(<a href="#ref-mothilal2020explaining" role="doc-biblioref">Mothilal, Sharma, and Tan 2020</a>)</span>; and <strong>causality</strong> — counterfactuals should respect the structural causal model underlying the data generating process <span class="citation" data-cites="karimi2020algorithmic">Karimi, Schölkopf, and Valera (<a href="#ref-karimi2021algorithmic" role="doc-biblioref">2021</a>)</span>.</p>
-<p>Beyond gradient-based counterfactual search, which has been the main focus in our development so far, various methodologies have been proposed that can handle non-differentiable models like decision trees. We have implemented some of these approaches and will discuss them further in <a href="#sec-gen">Section&nbsp;3.2</a>.</p>
+<p>Numerous extensions to this simple approach have been developed since CE were first proposed in 2017 (see <span class="citation" data-cites="verma2020counterfactual">Verma, Dickerson, and Hines (<a href="#ref-verma2020counterfactual" role="doc-biblioref">2020</a>)</span> and <span class="citation" data-cites="karimi2020survey">(<a href="#ref-karimi2020survey" role="doc-biblioref">Karimi, Barthe, et al. 2020</a>)</span> for surveys). The various approaches largely differ in that they use different flavours of search objective defined in <a href="#eq-solution" class="quarto-xref">Equation&nbsp;2</a>. Different penalties are often used to address many of the desirable properties of effective CE that have been set out. These desiderata include: <strong>proximity</strong> — the distance between factual and counterfactual features should be small <span class="citation" data-cites="wachter2017counterfactual">(<a href="#ref-wachter2017counterfactual" role="doc-biblioref">Wachter, Mittelstadt, and Russell 2017</a>)</span>; <strong>actionability</strong> — the proposed recourse should be actionable <span class="citation" data-cites="ustun2019actionable">Poyiadzi et al. (<a href="#ref-poyiadzi2020face" role="doc-biblioref">2020</a>)</span>; <strong>plausibility</strong> — the counterfactual explanation should be plausible to a human <span class="citation" data-cites="joshi2019realistic">Schut et al. (<a href="#ref-schut2021generating" role="doc-biblioref">2021</a>)</span>; <strong>sparsity</strong> — the counterfactual explanation should involve as few individual feature changes as possible <span class="citation" data-cites="schut2021generating">(<a href="#ref-schut2021generating" role="doc-biblioref">Schut et al. 2021</a>)</span>; <strong>robustness</strong> — the counterfactual explanation should be robust to domain and model shifts <span class="citation" data-cites="upadhyay2021robust">(<a href="#ref-upadhyay2021robust" role="doc-biblioref">Upadhyay, Joshi, and Lakkaraju 2021</a>)</span>; <strong>diversity</strong> — ideally multiple diverse counterfactuals should be provided <span class="citation" data-cites="mothilal2020explaining">(<a href="#ref-mothilal2020explaining" role="doc-biblioref">Mothilal, Sharma, and Tan 2020</a>)</span>; and <strong>causality</strong> — counterfactuals should respect the structural causal model underlying the data generating process <span class="citation" data-cites="karimi2020algorithmic">Karimi, Schölkopf, and Valera (<a href="#ref-karimi2021algorithmic" role="doc-biblioref">2021</a>)</span>.</p>
+<p>Beyond gradient-based counterfactual search, which has been the main focus in our development so far, various methodologies have been proposed that can handle non-differentiable models like decision trees. We have implemented some of these approaches and will discuss them further in <a href="#sec-gen" class="quarto-xref">Section&nbsp;3.2</a>.</p>
 </section>
 <section id="existing-software" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="existing-software"><span class="header-section-number">2.3</span> Existing software</h2>
@@ -165,11 +174,15 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 </section>
 <section id="sec-arch" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Introducing: <code>CounterfactualExplanations.jl</code></h1>
-<p><a href="#fig-arch">Figure&nbsp;1</a> provides an overview of the package architecture. It is built around two core modules that are designed to be as extensible as possible through dispatch: 1) <code>Models</code> is concerned with making any arbitrary model compatible with the package; 2) <code>Generators</code> is used to implement counterfactual search algorithms. The core function of the package—<code>generate_counterfactual</code>—uses an instance of type <code>&lt;:AbstractFittedModel</code> produced by the <code>Models</code> module and an instance of type <code>&lt;:AbstractGenerator</code> produced by the <code>Generators</code> module. Relating this to the methodology outlined in <a href="#sec-method">Section&nbsp;2.2</a>, the former instance corresponds to the model <span class="math inline">\(M\)</span>, while the latter defines the rules for the counterfactual search (<a href="#eq-solution">Equation&nbsp;2</a>).</p>
-<div id="fig-arch" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/pkg_architecture.png" style="width:3.33333in;height:2.38095in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: High-level schematic overview of package architecture. Modules are shown in red, structs in green and functions in purple.</figcaption>
+<p><a href="#fig-arch" class="quarto-xref">Figure&nbsp;1</a> provides an overview of the package architecture. It is built around two core modules that are designed to be as extensible as possible through dispatch: 1) <code>Models</code> is concerned with making any arbitrary model compatible with the package; 2) <code>Generators</code> is used to implement counterfactual search algorithms. The core function of the package—<code>generate_counterfactual</code>—uses an instance of type <code>&lt;:AbstractFittedModel</code> produced by the <code>Models</code> module and an instance of type <code>&lt;:AbstractGenerator</code> produced by the <code>Generators</code> module. Relating this to the methodology outlined in <a href="#sec-method" class="quarto-xref">Section&nbsp;2.2</a>, the former instance corresponds to the model <span class="math inline">\(M\)</span>, while the latter defines the rules for the counterfactual search (<a href="#eq-solution" class="quarto-xref">Equation&nbsp;2</a>).</p>
+<div id="fig-arch" class="quarto-figure quarto-figure-center anchored" height="2.38095in" width="3.33333in">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/pkg_architecture.png" style="width:3.33333in;height:2.38095in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-arch-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: High-level schematic overview of package architecture. Modules are shown in red, structs in green and functions in purple.
+</figcaption>
 </figure>
 </div>
 <section id="models" class="level2" data-number="3.1">
@@ -185,11 +198,15 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 </section>
 <section id="sec-gen" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="sec-gen"><span class="header-section-number">3.2</span> Generators</h2>
-<p>A large and growing number of counterfactual <a href="https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/explanation/generators/overview/">generators</a> have already been implemented in our package (<a href="#tbl-gen">Table&nbsp;1</a>). At a high level, we distinguish generators in terms of their compatible model types, their default search space, and their composability. All “gradient-based” generators are compatible with differentiable models, e.g.&nbsp;<code>Flux</code> and <code>torch</code>, while “tree-based” generators are only applicable to models that involve decision trees. Concerning the search space, it is possible to search counterfactuals in a lower-dimensional latent embedding of the feature space that implicitly encodes the data-generating process (DGP). To learn the latent embedding, existing work has typically relied on generative models or existing causal knowledge <span class="citation" data-cites="joshi2019realistic">Karimi, Schölkopf, and Valera (<a href="#ref-karimi2021algorithmic" role="doc-biblioref">2021</a>)</span>. While this notion is compatible with all of our gradient-based generators, only some generators search a latent space by default. Finally, composability implies that the given generator can be blended with any other composable generator, which we discuss in <a href="#sec-gen-comp">Section&nbsp;4.2</a>.</p>
+<p>A large and growing number of counterfactual <a href="https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/explanation/generators/overview/">generators</a> have already been implemented in our package (<a href="#tbl-gen" class="quarto-xref">Table&nbsp;1</a>). At a high level, we distinguish generators in terms of their compatible model types, their default search space, and their composability. All “gradient-based” generators are compatible with differentiable models, e.g.&nbsp;<code>Flux</code> and <code>torch</code>, while “tree-based” generators are only applicable to models that involve decision trees. Concerning the search space, it is possible to search counterfactuals in a lower-dimensional latent embedding of the feature space that implicitly encodes the data-generating process (DGP). To learn the latent embedding, existing work has typically relied on generative models or existing causal knowledge <span class="citation" data-cites="joshi2019realistic">Karimi, Schölkopf, and Valera (<a href="#ref-karimi2021algorithmic" role="doc-biblioref">2021</a>)</span>. While this notion is compatible with all of our gradient-based generators, only some generators search a latent space by default. Finally, composability implies that the given generator can be blended with any other composable generator, which we discuss in <a href="#sec-gen-comp" class="quarto-xref">Section&nbsp;4.2</a>.</p>
 <p>Beyond these broad technical distinctions, generators largely differ in terms of how they address the various desiderata mentioned above: <em>ClapROAR</em> aims to preserve the classifier, i.e.&nbsp;to generate counterfactuals that are robust to endogenous model shifts <span class="citation" data-cites="altmeyer2023endogenous">(<a href="#ref-altmeyer2023endogenous" role="doc-biblioref">Altmeyer et al. 2023</a>)</span>; <em>CLUE</em> searches plausible counterfactuals in the latent embedding of a generative model by explicitly minimising predictive entropy <span class="citation" data-cites="antoran2020getting">(<a href="#ref-antoran2020getting" role="doc-biblioref">Antorán et al. 2020</a>)</span>; <em>DiCE</em> is designed to generate multiple, maximally diverse counterfactuals <span class="citation" data-cites="mothilal2020explaining">(<a href="#ref-mothilal2020explaining" role="doc-biblioref">Mothilal, Sharma, and Tan 2020</a>)</span>; <em>FeatureTweak</em> leverages the internals of decision trees to search counterfactuals on a feature-by-feature basis, finding the counterfactual that tweaks the features in the least costly way <span class="citation" data-cites="tolomei2017interpretable">(<a href="#ref-tolomei2017interpretable" role="doc-biblioref">Tolomei et al. 2017</a>)</span>; <em>Gravitational</em> aims to generate plausible and robust counterfactuals by minimising the distance to observed samples in the target class <span class="citation" data-cites="altmeyer2023endogenous">(<a href="#ref-altmeyer2023endogenous" role="doc-biblioref">Altmeyer et al. 2023</a>)</span>; <em>Greedy</em> aims to generate plausible counterfactuals by implicitly minimising predictive uncertainty of Bayesian classifiers <span class="citation" data-cites="schut2021generating">(<a href="#ref-schut2021generating" role="doc-biblioref">Schut et al. 2021</a>)</span>; <em>GrowingSpheres</em> is model-agnostic, relying solely on identifying nearest neighbours of counterfactuals in the target class by gradually increasing the search radius and then moving counterfactuals in that direction<span class="citation" data-cites="laugel2017inversea">(<a href="#ref-laugel2017inversea" role="doc-biblioref">Laugel et al. 2017</a>)</span>; <em>PROBE</em> generates probabilistically robust counterfactuals <span class="citation" data-cites="pawelczyk2022probabilistically">(<a href="#ref-pawelczyk2022probabilistically" role="doc-biblioref">Pawelczyk et al. 2022</a>)</span>; <em>REVISE</em> addresses the need for plausibility by searching counterfactuals in the latent embedding of a Variational Autoencoder (VAE) <span class="citation" data-cites="joshi2019realistic">(<a href="#ref-joshi2019realistic" role="doc-biblioref">Joshi et al. 2019</a>)</span>; <em>Wachter</em> is the baseline approach that only penalises the distance to the original sample <span class="citation" data-cites="wachter2017counterfactual">(<a href="#ref-wachter2017counterfactual" role="doc-biblioref">Wachter, Mittelstadt, and Russell 2017</a>)</span>.</p>
 <div id="tbl-gen" class="anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="table quarto-float-caption quarto-float-tbl" id="tbl-gen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Overview of implemented counterfactual generators.
+</figcaption>
+<div aria-describedby="tbl-gen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
-<caption>Table&nbsp;1: Overview of implemented counterfactual generators.</caption>
 <colgroup>
 <col style="width: 25%">
 <col style="width: 25%">
@@ -268,6 +285,8 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 </tbody>
 </table>
 </div>
+</figure>
+</div>
 </section>
 <section id="data-catalogue" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="data-catalogue"><span class="header-section-number">3.3</span> Data Catalogue</h2>
@@ -293,14 +312,18 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 <p>In the following, we begin our exploration of the package functionality with a simple example. We then demonstrate how more advanced generators can be easily composed and show how users can impose mutability constraints on features. Finally, we also briefly explore the topics of counterfactual evaluation and benchmarking.</p>
 <section id="sec-simple" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-simple"><span class="header-section-number">4.1</span> A Simple Generic Generator</h2>
-<p>Code <span class="math inline">\(\ref{lst:simple}\)</span> below provides a complete example demonstrating how the framework presented in <a href="#sec-method">Section&nbsp;2.2</a> can be implemented through our package. Using a synthetic data set with linearly separable features we first fit a linear classifier (line <span class="math inline">\(\ref{line:simple-class}\)</span>). Next, we define the target class (line <span class="math inline">\(\ref{line:simple-t}\)</span>) and then draw a random sample from the other class (line <span class="math inline">\(\ref{line:simple-x}\)</span>). Finally, we instantiate a generic generator (line <span class="math inline">\(\ref{line:simple-gen}\)</span>) and run the counterfactual search (line <span class="math inline">\(\ref{line:simple-search}\)</span>). <a href="#fig-binary">Figure&nbsp;2</a> illustrates the resulting counterfactual path in the two-dimensional feature space. Features go through iterative perturbations until the desired confidence level is reached as illustrated by the contour in the background, which shows the softmax output for the target class.</p>
-<div id="fig-binary" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/ce_binary.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: Counterfactual path using generic counterfactual generator for conventional binary classifier.</figcaption>
+<p>Code <span class="math inline">\(\ref{lst:simple}\)</span> below provides a complete example demonstrating how the framework presented in <a href="#sec-method" class="quarto-xref">Section&nbsp;2.2</a> can be implemented through our package. Using a synthetic data set with linearly separable features we first fit a linear classifier (line <span class="math inline">\(\ref{line:simple-class}\)</span>). Next, we define the target class (line <span class="math inline">\(\ref{line:simple-t}\)</span>) and then draw a random sample from the other class (line <span class="math inline">\(\ref{line:simple-x}\)</span>). Finally, we instantiate a generic generator (line <span class="math inline">\(\ref{line:simple-gen}\)</span>) and run the counterfactual search (line <span class="math inline">\(\ref{line:simple-search}\)</span>). <a href="#fig-binary" class="quarto-xref">Figure&nbsp;2</a> illustrates the resulting counterfactual path in the two-dimensional feature space. Features go through iterative perturbations until the desired confidence level is reached as illustrated by the contour in the background, which shows the softmax output for the target class.</p>
+<div id="fig-binary" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/ce_binary.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-binary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Counterfactual path using generic counterfactual generator for conventional binary classifier.
+</figcaption>
 </figure>
 </div>
-<p>In this simple example, the generic generator produces a valid counterfactual, since the decision boundary is crossed and the predicted label is flipped. But the counterfactual is not plausible: it does not appear to be generated by the same DGP as the observed data in the target class. This is because the generic generator does not take into account any of the desiderata mentioned in <a href="#sec-method">Section&nbsp;2.2</a>, except for the distance to the factual sample.</p>
+<p>In this simple example, the generic generator produces a valid counterfactual, since the decision boundary is crossed and the predicted label is flipped. But the counterfactual is not plausible: it does not appear to be generated by the same DGP as the observed data in the target class. This is because the generic generator does not take into account any of the desiderata mentioned in <a href="#sec-method" class="quarto-xref">Section&nbsp;2.2</a>, except for the distance to the factual sample.</p>
 </section>
 <section id="sec-gen-comp" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="sec-gen-comp"><span class="header-section-number">4.2</span> Composing Generators</h2>
@@ -309,13 +332,17 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 <p><span id="eq-comp"><span class="math display">\[
 \mathbf{Z}^\prime = \arg \min_{\mathbf{Z}^\prime \in \mathcal{Z}^{L \times K}} \{  {\ell(M(f(\mathbf{Z}^\prime)),t)} + \lambda \cdot {\text{diversity}(f(\mathbf{Z}^\prime)) }  \}
 \tag{3}\]</span></span></p>
-<p>where <span class="math inline">\(\mathbf{X}^\prime\)</span> is an <span class="math inline">\(L\)</span>-dimensional array of counterfactuals, <span class="math inline">\(f: \mathcal{Z}^{L \times K} \mapsto \mathcal{X}^{L \times D}\)</span> is a function that maps the <span class="math inline">\(L \times K\)</span>-dimensional latent space <span class="math inline">\(\mathcal{Z}\)</span> to the <span class="math inline">\(L \times D\)</span>-dimensional feature space <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\text{diversity}(\cdot)\)</span> is the penalty proposed by <span class="citation" data-cites="mothilal2020explaining">Mothilal, Sharma, and Tan (<a href="#ref-mothilal2020explaining" role="doc-biblioref">2020</a>)</span> that induces diverse sets of counterfactuals. As in <a href="#eq-solution">Equation&nbsp;2</a>, <span class="math inline">\(\ell\)</span> is the loss function, <span class="math inline">\(M\)</span> is the black-box model, <span class="math inline">\(t\)</span> is the target class, and <span class="math inline">\(\lambda\)</span> is the strength of the penalty.</p>
-<p>Code <span class="math inline">\(\ref{lst:composed}\)</span> demonstrates how <a href="#eq-comp">Equation&nbsp;3</a> can be seamlessly translated into Julia code. We begin by instantiating a <code>GradientBasedGenerator</code> in line <span class="math inline">\(\ref{line:composed-init}\)</span>. Next, we use chained macros for composition: firstly, we define the counterfactual search <code>@objective</code> corresponding to <em>DiCE</em> in line <span class="math inline">\(\ref{line:composed-dice}\)</span>; secondly, we define the latent space search strategy corresponding to <em>REVISE</em> using the <code>@search_latent_space</code> macro in line <span class="math inline">\(\ref{line:composed-latent}\)</span>; finally, we specify our prefered optimisation method using the <code>@with_optimiser</code> macro in line <span class="math inline">\(\ref{line:composed-adam}\)</span>.</p>
-<p>In this case, the counterfactual search is performed in the latent space of a Variational Autoencoder (VAE) that is automatically trained on the observed data. It is important to specify the keyword argument <code>num_counterfactuals</code> of the <code>generate_counterfactual</code> to some value higher than <span class="math inline">\(1\)</span> (default), to ensure that the diversity penalty is effective. The resulting counterfactual path is shown in <a href="#fig-binary-advanced">Figure&nbsp;3</a> below. We observe that the resulting counterfactuals are diverse and the majority of them are plausible.</p>
-<div id="fig-binary-advanced" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/binary_advanced.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3: Counterfactual path using the <em>DiCE</em> generator.</figcaption>
+<p>where <span class="math inline">\(\mathbf{X}^\prime\)</span> is an <span class="math inline">\(L\)</span>-dimensional array of counterfactuals, <span class="math inline">\(f: \mathcal{Z}^{L \times K} \mapsto \mathcal{X}^{L \times D}\)</span> is a function that maps the <span class="math inline">\(L \times K\)</span>-dimensional latent space <span class="math inline">\(\mathcal{Z}\)</span> to the <span class="math inline">\(L \times D\)</span>-dimensional feature space <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(\text{diversity}(\cdot)\)</span> is the penalty proposed by <span class="citation" data-cites="mothilal2020explaining">Mothilal, Sharma, and Tan (<a href="#ref-mothilal2020explaining" role="doc-biblioref">2020</a>)</span> that induces diverse sets of counterfactuals. As in <a href="#eq-solution" class="quarto-xref">Equation&nbsp;2</a>, <span class="math inline">\(\ell\)</span> is the loss function, <span class="math inline">\(M\)</span> is the black-box model, <span class="math inline">\(t\)</span> is the target class, and <span class="math inline">\(\lambda\)</span> is the strength of the penalty.</p>
+<p>Code <span class="math inline">\(\ref{lst:composed}\)</span> demonstrates how <a href="#eq-comp" class="quarto-xref">Equation&nbsp;3</a> can be seamlessly translated into Julia code. We begin by instantiating a <code>GradientBasedGenerator</code> in line <span class="math inline">\(\ref{line:composed-init}\)</span>. Next, we use chained macros for composition: firstly, we define the counterfactual search <code>@objective</code> corresponding to <em>DiCE</em> in line <span class="math inline">\(\ref{line:composed-dice}\)</span>; secondly, we define the latent space search strategy corresponding to <em>REVISE</em> using the <code>@search_latent_space</code> macro in line <span class="math inline">\(\ref{line:composed-latent}\)</span>; finally, we specify our prefered optimisation method using the <code>@with_optimiser</code> macro in line <span class="math inline">\(\ref{line:composed-adam}\)</span>.</p>
+<p>In this case, the counterfactual search is performed in the latent space of a Variational Autoencoder (VAE) that is automatically trained on the observed data. It is important to specify the keyword argument <code>num_counterfactuals</code> of the <code>generate_counterfactual</code> to some value higher than <span class="math inline">\(1\)</span> (default), to ensure that the diversity penalty is effective. The resulting counterfactual path is shown in <a href="#fig-binary-advanced" class="quarto-xref">Figure&nbsp;3</a> below. We observe that the resulting counterfactuals are diverse and the majority of them are plausible.</p>
+<div id="fig-binary-advanced" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binary-advanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/binary_advanced.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-binary-advanced-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Counterfactual path using the <em>DiCE</em> generator.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -323,22 +350,30 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 <h2 data-number="4.3" class="anchored" data-anchor-id="sec-mut"><span class="header-section-number">4.3</span> Mutability Constraints</h2>
 <p>In practice, features usually cannot be perturbed arbitrarily. Suppose, for example, that one of the features used by a bank to predict the creditworthiness of its clients is <em>age</em>. If a counterfactual explanation for the prediction model indicates that older clients should “grow younger” to improve their creditworthiness, then this is an interesting insight (it reveals age bias), but the provided recourse is not actionable. In such cases, we may want to constrain the mutability of features. To illustrate how this can be implemented in our package, we will continue with the example from above.</p>
 <p>Mutability can be defined in terms of four different options: 1) the feature is mutable in both directions, 2) the feature can only increase (e.g.&nbsp;<em>age</em>), 3) the feature can only decrease (e.g.&nbsp;<em>time left</em> until your next deadline) and 4) the feature is not mutable (e.g.&nbsp;<em>skin colour</em>, <em>ethnicity</em>, …). To specify which category a feature belongs to, users can pass a vector of symbols containing the mutability constraints at the pre-processing stage. For each feature one can choose from these four options: <code>:both</code> (mutable in both directions), <code>:increase</code> (only up), <code>:decrease</code> (only down) and <code>:none</code> (immutable). By default, <code>nothing</code> is passed to that keyword argument and it is assumed that all features are mutable in both directions.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>We can impose that the first feature is immutable as follows: <code>counterfactual_data.mutability = [:none, :both]</code>. The resulting counterfactual path is shown in <a href="#fig-mutability">Figure&nbsp;4</a> below. Since only the second feature can be perturbed, the sample can only move along the vertical axis. In this case, the counterfactual search does not yield a valid counterfactual, since the target class is not reached.</p>
-<div id="fig-mutability" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/constraint_mutability.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;4: Counterfactual path with immutable feature.</figcaption>
+<p>We can impose that the first feature is immutable as follows: <code>counterfactual_data.mutability = [:none, :both]</code>. The resulting counterfactual path is shown in <a href="#fig-mutability" class="quarto-xref">Figure&nbsp;4</a> below. Since only the second feature can be perturbed, the sample can only move along the vertical axis. In this case, the counterfactual search does not yield a valid counterfactual, since the target class is not reached.</p>
+<div id="fig-mutability" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mutability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/constraint_mutability.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-mutability-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Counterfactual path with immutable feature.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="sec-eval" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="sec-eval"><span class="header-section-number">4.4</span> Evaluation and Benchmarking</h2>
 <p>The package also makes it easy to <a href="https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/tutorials/evaluation/">evaluate</a> counterfactuals with respect to many of the desiderata mentioned above. For example, users may want to infer how costly the provided recourse is to individuals. To this end, we can measure the distance of the counterfactual from its original value. The API call to compute the distance metric defined in <span class="citation" data-cites="wachter2017counterfactual">Wachter, Mittelstadt, and Russell (<a href="#ref-wachter2017counterfactual" role="doc-biblioref">2017</a>)</span>, for instance, is as simple as <code>evaluate(ce; measure=distance_mad)</code>, where <code>ce</code> can also be a vector of <code>CounterfactualExplanation</code>s.</p>
-<p>Additionally, the package provides a <a href="https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/tutorials/benchmarking/">benchmarking</a> framework that allows users to compare the performance of different generators on a given dataset. In <a href="#fig-bmk">Figure&nbsp;5</a> we show the results of a benchmark comparing several generators in terms of the average cost and implausibility of the generated counterfactuals. The cost is proxied by the L1-norm of the difference between the factual and counterfactual features, while implausibility is measured by the distance of the counterfactuals from samples in the target class. The results illustrate that there is a tradeoff between minimizing costs to individuals and generating plausible counterfactuals.</p>
-<div id="fig-bmk" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/bmk.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;5: Benchmarking results for different generators.</figcaption>
+<p>Additionally, the package provides a <a href="https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/tutorials/benchmarking/">benchmarking</a> framework that allows users to compare the performance of different generators on a given dataset. In <a href="#fig-bmk" class="quarto-xref">Figure&nbsp;5</a> we show the results of a benchmark comparing several generators in terms of the average cost and implausibility of the generated counterfactuals. The cost is proxied by the L1-norm of the difference between the factual and counterfactual features, while implausibility is measured by the distance of the counterfactuals from samples in the target class. The results illustrate that there is a tradeoff between minimizing costs to individuals and generating plausible counterfactuals.</p>
+<div id="fig-bmk" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bmk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/bmk.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-bmk-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Benchmarking results for different generators.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -355,11 +390,15 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 </ul>
 <p>To demonstrate how this can be done in practice, we will reiterate here how native support for <a href="https://fluxml.ai/"><code>Flux.jl</code></a> <span class="citation" data-cites="innes2018flux">(<a href="#ref-innes2018flux" role="doc-biblioref">Innes 2018</a>)</span> deep learning models was enabled.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> Once again we use synthetic data for an illustrative example. Code <span class="math inline">\(\ref{lst:nn}\)</span> below builds a simple model architecture that can be used for a multi-class prediction task. Note how outputs from the final layer are not passed through a softmax activation function, since the counterfactual loss is evaluated with respect to logits as we discussed earlier. The model is trained with dropout.</p>
 <p>Code <span class="math inline">\(\ref{lst:mymodel}\)</span> below implements the two steps that were necessary to make Flux models compatible with the package. In line <span class="math inline">\(\ref{line:mymodel-subtype}\)</span> we declare our new struct as a subtype of <code>AbstractDifferentiableModel</code>, which itself is an abstract subtype of <code>AbstractFittedModel</code>.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> Computing logits amounts to just calling the model on inputs. Predicted probabilities for labels can be computed by passing logits through the softmax function.</p>
-<p>The API call for generating counterfactuals for our new model is the same as before. <a href="#fig-multi">Figure&nbsp;6</a> shows the resulting counterfactual path for a randomly chosen sample. In this case, the contour shows the predicted probability that the input is in the target class (<span class="math inline">\(t=2\)</span>).</p>
-<div id="fig-multi" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/ce_multi.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6: Counterfactual path using generic counterfactual generator for multi-class classifier.</figcaption>
+<p>The API call for generating counterfactuals for our new model is the same as before. <a href="#fig-multi" class="quarto-xref">Figure&nbsp;6</a> shows the resulting counterfactual path for a randomly chosen sample. In this case, the contour shows the predicted probability that the input is in the target class (<span class="math inline">\(t=2\)</span>).</p>
+<div id="fig-multi" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-multi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/ce_multi.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-multi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Counterfactual path using generic counterfactual generator for multi-class classifier.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -370,11 +409,15 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="a-generator-with-dropout"><span class="header-section-number">5.2.1</span> A Generator with Dropout</h3>
 <p>Code <span class="math inline">\(\ref{lst:dropout}\)</span> below implements two important steps: 1) create an abstract subtype of the <code>AbstractGradientBasedGenerator</code> and 2) create a constructor with an additional field for the dropout probability.</p>
 <p>Next, in Code <span class="math inline">\(\ref{lst:generate}\)</span> we define how feature perturbations are generated for our custom dropout generator: in particular, we extend the relevant function through a method that implements the dropout logic.</p>
-<p>Finally, we proceed to generate counterfactuals in the same way we always do. The resulting counterfactual path is shown in <a href="#fig-dropout">Figure&nbsp;7</a>.</p>
-<div id="fig-dropout" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/dropout.png" style="width:3.33333in;height:2.5in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;7: Counterfactual path for a generator with dropout.</figcaption>
+<p>Finally, we proceed to generate counterfactuals in the same way we always do. The resulting counterfactual path is shown in <a href="#fig-dropout" class="quarto-xref">Figure&nbsp;7</a>.</p>
+<div id="fig-dropout" class="quarto-figure quarto-figure-center anchored" height="15pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dropout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/dropout.png" style="width:3.33333in;height:2.5in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-dropout-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Counterfactual path for a generator with dropout.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -387,23 +430,31 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 <h2 data-number="6.1" class="anchored" data-anchor-id="give-me-some-credit"><span class="header-section-number">6.1</span> Give Me Some Credit</h2>
 <p>The <em>Give Me Some Credit</em> dataset is one of the tabular real-world datasets that ship with the package <span class="citation" data-cites="kaggle2011give">(<a href="#ref-kaggle2011give" role="doc-biblioref">Kaggle 2011</a>)</span>. It can be used to train a binary classifier to predict whether a borrower is likely to experience financial difficulties in the next two years. In particular, we have an output variable <span class="math inline">\(y \in \{0=\texttt{no stress},1=\texttt{stress}\}\)</span> and a feature matrix <span class="math inline">\(X\)</span> that includes socio-demographic variables like <code>age</code> and <code>income</code>. A retail bank might use such a classifier to determine if potential borrowers should receive credit or not.</p>
 <p>For the classification task, we use a Multi-Layer Perceptron with dropout regularization. Using the Gravitational generator <span class="citation" data-cites="altmeyer2023endogenous">(<a href="#ref-altmeyer2023endogenous" role="doc-biblioref">Altmeyer et al. 2023</a>)</span> we will generate counterfactuals for ten randomly chosen individuals that would be denied credit based on our pre-trained model. Concerning the mutability of features, we only impose that the <code>age</code> cannot be decreased.</p>
-<p><a href="#fig-credit">Figure&nbsp;8</a> shows the resulting counterfactuals proposed by Wachter in the two-dimensional feature space spanned by the <code>age</code> and <code>income</code> variables. An increase in income and age is recommended for the majority of individuals, which seems plausible: both age and income are typically positively related to creditworthiness.</p>
-<div id="fig-credit" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/credit.png" style="width:3.33333in;height:1.33333in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;8: Give Me Some Credit: counterfactuals for would-be borrowers proposed by the Gravitational Generator.</figcaption>
+<p><a href="#fig-credit" class="quarto-xref">Figure&nbsp;8</a> shows the resulting counterfactuals proposed by Wachter in the two-dimensional feature space spanned by the <code>age</code> and <code>income</code> variables. An increase in income and age is recommended for the majority of individuals, which seems plausible: both age and income are typically positively related to creditworthiness.</p>
+<div id="fig-credit" class="quarto-figure quarto-figure-center anchored" height="8pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-credit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/credit.png" style="width:3.33333in;height:1.33333in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-credit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Give Me Some Credit: counterfactuals for would-be borrowers proposed by the Gravitational Generator.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="mnist" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="mnist"><span class="header-section-number">6.2</span> MNIST</h2>
-<p>For our second example, we will look at image data. The MNIST dataset contains 60,000 training samples of handwritten digits in the form of 28x28 pixel grey-scale images <span class="citation" data-cites="lecun1998mnist">(<a href="#ref-lecun1998mnist" role="doc-biblioref">LeCun 1998</a>)</span>. Each image is associated with a label indicating the digit (0-9) that the image represents. The data makes for an interesting case study of CE because humans have a good idea of what plausible counterfactuals of digits look like. For example, if you were asked to pick up an eraser and turn the digit in the left panel of <a href="#fig-mnist">Figure&nbsp;9</a> into a four (4) you would know exactly what to do: just erase the top part.</p>
+<p>For our second example, we will look at image data. The MNIST dataset contains 60,000 training samples of handwritten digits in the form of 28x28 pixel grey-scale images <span class="citation" data-cites="lecun1998mnist">(<a href="#ref-lecun1998mnist" role="doc-biblioref">LeCun 1998</a>)</span>. Each image is associated with a label indicating the digit (0-9) that the image represents. The data makes for an interesting case study of CE because humans have a good idea of what plausible counterfactuals of digits look like. For example, if you were asked to pick up an eraser and turn the digit in the left panel of <a href="#fig-mnist" class="quarto-xref">Figure&nbsp;9</a> into a four (4) you would know exactly what to do: just erase the top part.</p>
 <p>On the model side, we will use a simple multi-layer perceptron (MLP). Code <span class="math inline">\(\ref{lst:mnist-setup}\)</span> loads the data and the pre-trained MLP. It also loads two pre-trained Variational Auto-Encoders, which will be used by our counterfactual generator of choice for this task: <em>REVISE</em>.</p>
-<p>The proposed counterfactuals are shown in <a href="#fig-mnist">Figure&nbsp;9</a>. In the case in which <em>REVISE</em> has access to an expressive VAE (centre), the result looks convincing: the perturbed image does look like it represents a four (4). In terms of explainability, we may conclude that removing the top part of the handwritten nine (9) leads the black-box model to predict that the perturbed image represents a four (4). We should note, however, that the quality of counterfactuals produced by <em>REVISE</em> hinges on the performance of the underlying generative model, as demonstrated by the result on the right. In this case, <em>REVISE</em> uses a weak VAE and the resulting counterfactual is invalid. In light of this, we recommend using Latent Space search with care.</p>
-<div id="fig-mnist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="www/mnist_9to4_latent.png" style="width:3.33333in;height:1.11111in" class="figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;9: Counterfactual explanations for MNIST using a Latent Space generator: turning a nine (9) into a four (4).</figcaption>
+<p>The proposed counterfactuals are shown in <a href="#fig-mnist" class="quarto-xref">Figure&nbsp;9</a>. In the case in which <em>REVISE</em> has access to an expressive VAE (centre), the result looks convincing: the perturbed image does look like it represents a four (4). In terms of explainability, we may conclude that removing the top part of the handwritten nine (9) leads the black-box model to predict that the perturbed image represents a four (4). We should note, however, that the quality of counterfactuals produced by <em>REVISE</em> hinges on the performance of the underlying generative model, as demonstrated by the result on the right. In this case, <em>REVISE</em> uses a weak VAE and the resulting counterfactual is invalid. In light of this, we recommend using Latent Space search with care.</p>
+<div id="fig-mnist" class="quarto-figure quarto-figure-center anchored" height="6.66666pc" width="20pc">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="www/mnist_9to4_latent.png" style="width:3.33333in;height:1.11111in" class="figure-img">
+</div>
+<figcaption class="figure quarto-float-caption quarto-float-fig" id="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Counterfactual explanations for MNIST using a Latent Space generator: turning a nine (9) into a four (4).
+</figcaption>
 </figure>
 </div>
 </section>
@@ -435,7 +486,7 @@ x^\prime = \arg \min_{x^\prime}  \ell(M(x^\prime),t) + \lambda h(x^\prime)
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">10 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">10 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-altmeyer2023endogenous" class="csl-entry" role="listitem">
 Altmeyer, Patrick, Giovan Angela, Aleksander Buszydlik, Karol Dobiczek, Arie van Deursen, and Cynthia Liem. 2023. <span>“Endogenous <span>Macrodynamics</span> in <span>Algorithmic</span> <span>Recourse</span>.”</span> In <em>First <span>IEEE</span> <span>Conference</span> on <span>Secure</span> and <span>Trustworthy</span> <span>Machine</span> <span>Learning</span></em>. <a href="https://doi.org/10.1109/satml54575.2023.00036">https://doi.org/10.1109/satml54575.2023.00036</a>.
 </div>
@@ -565,7 +616,7 @@ Xiao, Han, Kashif Rasul, and Roland Vollgraf. 2017. <span>“Fashion-<span>MNIST
 <div id="ref-yeh2009comparisons" class="csl-entry" role="listitem">
 Yeh, I-Cheng, and Che-hui Lien. 2009. <span>“The Comparisons of Data Mining Techniques for the Predictive Accuracy of Probability of Default of Credit Card Clients.”</span> <em>Expert Systems with Applications</em> 36 (2): 2473–80. <a href="https://doi.org/10.1016/j.eswa.2007.12.020">https://doi.org/10.1016/j.eswa.2007.12.020</a>.
 </div>
-</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
 <li id="fn1"><p>Implementations of loss functions with respect to logits are often numerically more stable. For example, the <code>logitbinarycrossentropy(ŷ, y)</code> implementation in <code>Flux.Losses</code> (used here) is more stable than the mathematically equivalent <code>binarycrossentropy(ŷ, y)</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -577,7 +628,7 @@ Yeh, I-Cheng, and Che-hui Lien. 2009. <span>“The Comparisons of Data Mining Te
 <li id="fn7"><p>Flux models are now natively supported by our package and can be instantiated by calling <code>FluxModel()</code>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>Note that in line <span class="math inline">\(\ref{line:mymodel-likelihood}\)</span> we also provide a field determining the likelihood. This is optional and only used internally to determine which loss function to use in the counterfactual search. If this field is not provided to the model, the loss function needs to be explicitly supplied to the generator.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-</section></div></main>
+</aside></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -658,10 +709,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -671,8 +721,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -685,6 +744,135 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -728,6 +916,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -753,6 +942,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -813,6 +1028,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
