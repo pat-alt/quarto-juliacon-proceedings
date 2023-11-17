@@ -32,7 +32,6 @@ contributes:
         \definecolor{mypink}{RGB}{219, 48, 122}
       pdf-engine: latexmk
       fontfamily: tgtermes
-      # biblio-style: juliacon
       cite-method: biblatex
     html:
       css: styles.css
