@@ -1,12 +1,21 @@
--- Filter to apply styling to Julia code chunks.
-local function CodeBlock (elem)
-    if elem.c[1][2][1] == "julia" then
-        return pandoc.RawBlock("latex", "\n\\begin{JuliaCode}\n"..elem.text.."\n\\end{JuliaCode}\n")
-    else
-        return elem
-    end
+
+-- Define the custom Julia listing environment
+function JuliaListing(elem)
+  if elem.classes:includes("julia") then
+    -- Add your custom Julia listing environment code here
+    -- For example, you can use the `lstlisting` environment from the `listings` package
+    return pandoc.RawBlock("latex", "\\begin{lstlisting}[language=Julia]\n" .. elem.text .. "\n\\end{lstlisting}")
+  end
 end
 
-return { { CodeBlock = CodeBlock } }
+-- Apply the custom Julia listing environment to all code blocks
+function CodeBlock(elem)
+  if elem.classes:includes("julia") then
+    return JuliaListing(elem)
+  end
+end
 
-
+-- Register the Lua filter
+return {
+  { CodeBlock = CodeBlock }
+}

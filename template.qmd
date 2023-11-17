@@ -106,6 +106,31 @@ Support for executable listings is only available in the development version of 
 
 :::
 
+Alternatively, we can use the existing `lstlisting` environment for Julia code using the `julia` language option. This is the same environment that is used for Julia code in the existing LaTeX template. Under the hood, this uses a lua filter to convert the code to LaTeX. The code creates @fig-2 which can be cross-referenced as `@fig-2`.
+
+```{julia}
+#| label: fig-2
+#| fig-cap: A figure caption.
+#| eval: true
+#| echo: true
+
+using Plots
+
+x = -3.0:0.01:3.0
+y = cumsum(rand(length(x)))
+plot(x, y)
+```
+
+
+::: {.callout-note}
+
+# Current Limitations
+
+I don't know how to cross-reference the code itself.
+
+:::
+
+
 ## Static Listings
 
 The special environment that is already defined for Julia code is still compatible with this template. 
