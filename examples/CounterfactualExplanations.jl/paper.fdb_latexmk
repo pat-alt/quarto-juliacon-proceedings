@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1700142591 "paper.tex" "paper.pdf" "paper" 1700142592 0
+["pdflatex"] 1700212219 "paper.tex" "paper.pdf" "paper" 1700212221 0
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc" 1529098226 2457 aaabbccba4df2a7f7371410ee4e075a3 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -239,10 +239,10 @@
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "jlcode.sty" 1699950169 18246 d33ccf865c532e11b9480876a6bb58b2 ""
   "journal_dat.tex" 1700063754 150 4281908cbdc15e71918b51b1dfcd42f9 ""
-  "juliacon.cls" 1700130899 30622 c4c9dfa27e0f02b412fe8f4e7b09136f ""
+  "juliacon.cls" 1700145537 30622 c4c9dfa27e0f02b412fe8f4e7b09136f ""
   "logojuliacon.pdf" 1699950169 4937 0cb75c4e65b0cf72a69c7716f140efe5 ""
-  "paper.aux" 1700142592 23203 d00a41ff76286be75e3790c4df0bbce7 "pdflatex"
-  "paper.tex" 1700142589 69519 f6d92d95d83fe297e13defc43d096df3 ""
+  "paper.aux" 1700212221 26012 6123ec25a3fe6cdc173e736d1d48e4af "pdflatex"
+  "paper.tex" 1700212216 72549 4170324229f225671f1ea92216cce9e3 ""
   "www/binary_advanced.png" 1700119176 80629 51bba1b63f28b8c08b87d9742eb7ed99 ""
   "www/bmk.png" 1700119176 55656 c3d62b0da4992071a1acf12f5a326e09 ""
   "www/ce_binary.png" 1700119176 62120 b7c144532ff5ca29cb981be7bdc08525 ""

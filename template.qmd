@@ -229,3 +229,9 @@ Age & Frequency \\ \hline
 This is a table caption.
 
 :::
+
+# Citations
+
+This `@altmeyer2023endogenous` renders the citation as @altmeyer2023endogenous. The bibliography is defined in `bibliography.bib`.
+
+# References

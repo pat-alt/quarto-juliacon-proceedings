@@ -11,6 +11,7 @@ contributes:
         - juliacon-proceedings.lua
       code-line-numbers: true
       linestretch: 1
+      link-citations: true
     pdf:
       include-in-header: header.tex
       template-partials:
@@ -24,13 +25,13 @@ contributes:
         - journal_dat.tex
         - jlcode.sty
         - logojuliacon.pdf
+        - juliacon.bst
         # Content to add in header that your format is using
       header-includes: |
         \usepackage{orcidlink}
         \definecolor{mypink}{RGB}{219, 48, 122}
       pdf-engine: latexmk
       fontfamily: tgtermes
-      whitespace: none
     html:
       css: styles.css
 
