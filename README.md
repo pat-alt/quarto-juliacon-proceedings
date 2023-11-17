@@ -37,6 +37,13 @@ format:
   juliacon-proceedings-pdf: default
 ```
 
+Finally, you can also update and remove the extension as follows:
+
+```
+quarto update pat-alt/quarto-juliacon-proceedings     # update
+quarto remove pat-alt/juliacon-proceedings     # remove
+```
+
 ## What is Quarto?
 
 [Quarto](https://quarto.org/) makes it easy to write reproducible documents that can be rendered to PDF, HTML, Word and more. It is based on Markdown, which is easy to learn and write. It also supports LaTeX, which is useful for more advanced formatting. As this extension demonstrates, Quarto is also very flexible and can be extended with custom templates and styles. 
