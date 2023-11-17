@@ -41,7 +41,7 @@ Finally, you can also update and remove the extension as follows:
 
 ```
 quarto update pat-alt/quarto-juliacon-proceedings     # update
-quarto remove pat-alt/quarto-juliacon-proceedings     # remove
+quarto remove pat-alt/juliacon-proceedings     # remove
 ```
 
 ## What is Quarto?
