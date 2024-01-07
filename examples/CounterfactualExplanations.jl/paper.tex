@@ -107,9 +107,7 @@
 \makeatother
 
 % Remove whitespace after paragraphs
-\setlength{\parskip}{0pt}
-
-\bibliographystyle{juliacon}
+\setlength{\parskip}{-1pt}
 \usepackage{orcidlink}
 \definecolor{mypink}{RGB}{219, 48, 122}
 \makeatletter
@@ -168,8 +166,8 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\usepackage[]{biblatex}
-\addbibresource{ref.bib}
+\usepackage[]{natbib}
+\bibliographystyle{juliacon.bst}
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
@@ -225,7 +223,7 @@ Intelligence, Counterfactual Explanations, Algorithmic Recourse},
 
 \setcounter{page}{1}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, frame hidden, boxrule=0pt, enhanced, breakable, sharp corners]}{\end{tcolorbox}}\fi
 
 \setstretch{1}
 \hypertarget{sec-intro}{%
@@ -235,17 +233,17 @@ Machine Learning models like Deep Neural Networks have become so complex
 and opaque over recent years that they are generally considered
 black-box systems. This lack of transparency exacerbates several other
 problems typically associated with these models: they tend to be
-unstable \autocite{goodfellow2014explaining}, encode existing biases
-\autocite{buolamwini2018gender} and learn representations that are
+unstable \citep{goodfellow2014explaining}, encode existing biases
+\citep{buolamwini2018gender} and learn representations that are
 surprising or even counter-intuitive from a human perspective
-\autocite{buolamwini2018gender}. Nonetheless, they often form the basis
-for data-driven decision-making systems in real-world applications.
+\citep{buolamwini2018gender}. Nonetheless, they often form the basis for
+data-driven decision-making systems in real-world applications.
 
 As others have pointed out, this scenario gives rise to an undesirable
 principal-agent problem involving a group of principals---i.e.~human
 stakeholders---that fail to understand the behaviour of their
-agent---i.e.~the black-box system \autocite{borch2022machine}. The group
-of principals may include programmers, product managers and other
+agent---i.e.~the black-box system \citep{borch2022machine}. The group of
+principals may include programmers, product managers and other
 decision-makers who develop and operate the system as well as those
 individuals ultimately subject to the decisions made by the system. In
 practice, decisions made by black-box systems are typically left
@@ -253,7 +251,7 @@ unchallenged since the group of principals cannot scrutinize them:
 
 \begin{quote}
 ``You cannot appeal to (algorithms). They do not listen. Nor do they
-bend.'' \autocite{oneil2016weapons}
+bend.'' \citep{oneil2016weapons}
 \end{quote}
 
 In light of all this, a quickly growing body of literature on
@@ -313,21 +311,20 @@ subdomains, definitions, concepts and taxonomies. Covering all of these
 is beyond the scope of this article, so we will focus only on high-level
 concepts. The following literature surveys provide more detail: Arrieta
 et al.~(2020) provide a broad overview of XAI
-\autocite{arrieta2020explainable}; Fan et al.~(2020) focus on
+\citep{arrieta2020explainable}; Fan et al.~(2020) focus on
 explainability in the context of deep learning
-\autocite{fan2020interpretability}; and finally, Karimi et al.~(2020)
-\autocite{karimi2020survey} and Verma et al.~(2020)
-\textcite{verma2020counterfactual} offer detailed reviews of the
-literature on Counterfactual Explanations and Algorithmic Recourse (see
-also \textcite{molnar2020interpretable} and
-\textcite{varshney2022trustworthy}). Miller (2019) explicitly discusses
-the concept of explainability from the perspective of a social scientist
-\autocite{miller2019explanation}.
+\citep{fan2020interpretability}; and finally, Karimi et al.~(2020)
+\citep{karimi2020survey} and Verma et al.~(2020)
+\citet{verma2020counterfactual} offer detailed reviews of the literature
+on Counterfactual Explanations and Algorithmic Recourse (see also
+\citet{molnar2020interpretable} and \citet{varshney2022trustworthy}).
+Miller (2019) explicitly discusses the concept of explainability from
+the perspective of a social scientist \citep{miller2019explanation}.
 
 The first broad distinction we want to make here is between
 \textbf{Interpretable} and \textbf{Explainable} AI. These terms are
 often used interchangeably, but this can lead to confusion. We find the
-distinction made in \textcite{rudin2019stop} useful: Interpretable AI
+distinction made in \citet{rudin2019stop} useful: Interpretable AI
 involves models that are inherently interpretable and transparent such
 as general additive models (GAM), decision trees and rule-based models;
 Explainable AI involves models that are not inherently interpretable but
@@ -335,16 +332,16 @@ require additional tools to be explainable to humans. Examples of the
 latter include Ensembles, Support Vector Machines and Deep Neural
 Networks. Some would argue that we best avoid the second category of
 models altogether and instead focus solely on interpretable AI
-\textcite{rudin2019stop}. While we agree that initial efforts should
-always be geared towards interpretable models, avoiding black boxes
-altogether would entail missed opportunities and anyway is probably not
-very realistic at this point. For that reason, we expect the need for
-XAI to persist in the medium term. Explainable AI can further be broadly
+\citet{rudin2019stop}. While we agree that initial efforts should always
+be geared towards interpretable models, avoiding black boxes altogether
+would entail missed opportunities and anyway is probably not very
+realistic at this point. For that reason, we expect the need for XAI to
+persist in the medium term. Explainable AI can further be broadly
 divided into \textbf{global} and \textbf{local} explainability: the
 former is concerned with explaining the average behaviour of a model,
 while the latter involves explanations for individual predictions
-\autocite{molnar2020interpretable}. Tools for global explainability
-include partial dependence plots (PDP), which involve the computation of
+\citep{molnar2020interpretable}. Tools for global explainability include
+partial dependence plots (PDP), which involve the computation of
 marginal effects through Monte Carlo, and global surrogates. A surrogate
 model is an interpretable model that is trained to explain the
 predictions of a black-box model.
@@ -374,19 +371,18 @@ predictions.
 
 A recent study has shown that even experienced data scientists tend to
 put too much trust in explanations produced by LIME and SHAP
-\autocite{kaur2020interpreting}. Another recent work has shown that both
+\citep{kaur2020interpreting}. Another recent work has shown that both
 methods can be easily fooled: they depend on random input perturbations,
 a property that can be abused by adverse agents to essentially whitewash
-strongly biased black-box models \autocite{slack2020fooling}. In related
+strongly biased black-box models \citep{slack2020fooling}. In related
 work, the same authors find that while gradient-based Counterfactual
 Explanations can also be manipulated, there is a straightforward way to
-protect against this in practice \autocite{slack2021counterfactual}. In
-the context of quality assessment, it is also worth noting
-that---contrary to surrogate explainers---CE always achieve full
-fidelity by construction: counterfactuals are searched with respect to
-the black-box classifier, not some proxy for it. That being said, CE
-should also be used with care and research around them is still in its
-early stages.
+protect against this in practice \citep{slack2021counterfactual}. In the
+context of quality assessment, it is also worth noting that---contrary
+to surrogate explainers---CE always achieve full fidelity by
+construction: counterfactuals are searched with respect to the black-box
+classifier, not some proxy for it. That being said, CE should also be
+used with care and research around them is still in its early stages.
 
 \hypertarget{sec-method}{%
 \subsection{A framework for Counterfactual
@@ -395,18 +391,18 @@ Explanations}\label{sec-method}}
 Counterfactual search involves feature perturbations: we are interested
 in understanding how we need to change individual attributes in order to
 change the model output to a desired value or label
-\autocite{molnar2020interpretable}. Typically the underlying methodology
-is presented in the context of binary classification:
+\citep{molnar2020interpretable}. Typically the underlying methodology is
+presented in the context of binary classification:
 \(M: \mathcal{X} \mapsto \mathcal{Y}\) where
 \(\mathcal{X}\subset\mathbb{R}^D\) and \(\mathcal{Y}=\{0,1\}\). Further,
 let \(t=1\) be the target class and let \(x\) denote the factual feature
 vector of some individual sample outside of the target class, so
 \(y=M(x)=0\). We follow this convention here, though it should be noted
 that the ideas presented here also carry over to multi-class problems
-and regression \autocite{molnar2020interpretable}.
+and regression \citep{molnar2020interpretable}.
 
 The counterfactual search objective originally proposed by
-\textcite{wachter2017counterfactual} is as follows
+\citet{wachter2017counterfactual} is as follows
 
 \begin{equation}\protect\hypertarget{eq-obj}{}{
 \min_{x^\prime \in \mathcal{X}} h(x^\prime) \ \ \ \mbox{s. t.} \ \ \ M(x^\prime) = t
@@ -440,27 +436,27 @@ convention that we have chosen to follow.\footnote{Implementations of
   the mathematically equivalent \texttt{binarycrossentropy(ŷ,\ y)}.}
 
 Numerous extensions to this simple approach have been developed since CE
-were first proposed in 2017 (see \textcite{verma2020counterfactual} and
-\textcite{karimi2020survey} for surveys). The various approaches largely
+were first proposed in 2017 (see \citet{verma2020counterfactual} and
+\citet{karimi2020survey} for surveys). The various approaches largely
 differ in that they use different flavours of search objective defined
 in Equation~\ref{eq-solution}. Different penalties are often used to
 address many of the desirable properties of effective CE that have been
 set out. These desiderata include: \textbf{proximity} --- the distance
 between factual and counterfactual features should be small
-\autocite{wachter2017counterfactual}; \textbf{actionability} --- the
+\citep{wachter2017counterfactual}; \textbf{actionability} --- the
 proposed recourse should be actionable
-\autocite{ustun2019actionable,poyiadzi2020face}; \textbf{plausibility}
---- the counterfactual explanation should be plausible to a human
-\autocite{joshi2019realistic,schut2021generating}; \textbf{sparsity} ---
+\citep{ustun2019actionable, poyiadzi2020face}; \textbf{plausibility} ---
+the counterfactual explanation should be plausible to a human
+\citep{joshi2019realistic, schut2021generating}; \textbf{sparsity} ---
 the counterfactual explanation should involve as few individual feature
-changes as possible \autocite{schut2021generating}; \textbf{robustness}
---- the counterfactual explanation should be robust to domain and model
-shifts \autocite{upadhyay2021robust}; \textbf{diversity} --- ideally
+changes as possible \citep{schut2021generating}; \textbf{robustness} ---
+the counterfactual explanation should be robust to domain and model
+shifts \citep{upadhyay2021robust}; \textbf{diversity} --- ideally
 multiple diverse counterfactuals should be provided
-\autocite{mothilal2020explaining}; and \textbf{causality} ---
+\citep{mothilal2020explaining}; and \textbf{causality} ---
 counterfactuals should respect the structural causal model underlying
 the data generating process
-\autocite{karimi2020algorithmic,karimi2021algorithmic}.
+\citep{karimi2020algorithmic, karimi2021algorithmic}.
 
 Beyond gradient-based counterfactual search, which has been the main
 focus in our development so far, various methodologies have been
@@ -477,20 +473,19 @@ therefore represents a novel contribution to the community. As for other
 programming languages, we are only aware of one other unifying
 framework: the Python library
 \href{https://carla-counterfactual-and-recourse-library.readthedocs.io/en/latest/?badge=latest}{CARLA}
-\autocite{pawelczyk2021carla}.\footnote{While we were writing this
-  paper, the \texttt{R} package \texttt{counterfactuals} was released
-  \autocite{dandl2023counterfactuals}. The developers seem to also
-  envision a unifying framework, but the project appears to still be in
-  its early stages.} In addition to that, there exists open-source code
-for some specific approaches to CE that have been proposed in recent
-years. The approach-specific implementations that we have been able to
-find are generally well-documented, but exclusively in Python. For
-example, a PyTorch implementation of a greedy generator for Bayesian
-models proposed in \textcite{schut2021generating} has been released. As
-another example, the popular
-\href{https://github.com/interpretml}{InterpretML} library includes an
-implementation of a diverse counterfactual generator
-\autocite{mothilal2020explaining}.
+\citep{pawelczyk2021carla}.\footnote{While we were writing this paper,
+  the \texttt{R} package \texttt{counterfactuals} was released
+  \citep{dandl2023counterfactuals}. The developers seem to also envision
+  a unifying framework, but the project appears to still be in its early
+  stages.} In addition to that, there exists open-source code for some
+specific approaches to CE that have been proposed in recent years. The
+approach-specific implementations that we have been able to find are
+generally well-documented, but exclusively in Python. For example, a
+PyTorch implementation of a greedy generator for Bayesian models
+proposed in \citet{schut2021generating} has been released. As another
+example, the popular \href{https://github.com/interpretml}{InterpretML}
+library includes an implementation of a diverse counterfactual generator
+\citep{mothilal2020explaining}.
 
 Generally speaking, software development in the space of XAI has largely
 focused on various global methods and surrogate explainers:
@@ -557,12 +552,12 @@ in purple.}
 \subsection{Models}\label{models}}
 
 The package currently offers native support for models built and trained
-in \href{https://fluxml.ai/}{Flux} \autocite{innes2018flux} as well as a
+in \href{https://fluxml.ai/}{Flux} \citep{innes2018flux} as well as a
 small subset of models made available through
 \href{https://alan-turing-institute.github.io/MLJ.jl/dev/}{MLJ}
-\autocite{blaom2020mlj}. While in general it is assumed that users
-resort to this package to explain their pre-trained models, we provide a
-simple API call to train the following
+\citep{blaom2020mlj}. While in general it is assumed that users resort
+to this package to explain their pre-trained models, we provide a simple
+API call to train the following
 \href{https://juliatrustworthyai.github.io/CounterfactualExplanations.jl/v0.1/tutorials/model_catalogue/}{models}:
 
 \begin{itemize}
@@ -572,7 +567,7 @@ simple API call to train the following
 \item
   Multi-Layer Perceptron (Deep Neural Network)
 \item
-  Deep Ensemble \textcite{lakshminarayanan2016simple}
+  Deep Ensemble \citet{lakshminarayanan2016simple}
 \item
   Decision Tree, Random Forest, Gradient Boosted Trees
 \end{itemize}
@@ -600,8 +595,8 @@ lower-dimensional latent embedding of the feature space that implicitly
 encodes the data-generating process (DGP). To learn the latent
 embedding, existing work has typically relied on generative models or
 existing causal knowledge
-\autocite{joshi2019realistic,karimi2021algorithmic}. While this notion
-is compatible with all of our gradient-based generators, only some
+\citep{joshi2019realistic, karimi2021algorithmic}. While this notion is
+compatible with all of our gradient-based generators, only some
 generators search a latent space by default. Finally, composability
 implies that the given generator can be blended with any other
 composable generator, which we discuss in Section~\ref{sec-gen-comp}.
@@ -610,30 +605,29 @@ Beyond these broad technical distinctions, generators largely differ in
 terms of how they address the various desiderata mentioned above:
 \emph{ClapROAR} aims to preserve the classifier, i.e.~to generate
 counterfactuals that are robust to endogenous model shifts
-\autocite{altmeyer2023endogenous}; \emph{CLUE} searches plausible
+\citep{altmeyer2023endogenous}; \emph{CLUE} searches plausible
 counterfactuals in the latent embedding of a generative model by
-explicitly minimising predictive entropy \autocite{antoran2020getting};
+explicitly minimising predictive entropy \citep{antoran2020getting};
 \emph{DiCE} is designed to generate multiple, maximally diverse
-counterfactuals \autocite{mothilal2020explaining}; \emph{FeatureTweak}
+counterfactuals \citep{mothilal2020explaining}; \emph{FeatureTweak}
 leverages the internals of decision trees to search counterfactuals on a
 feature-by-feature basis, finding the counterfactual that tweaks the
-features in the least costly way \autocite{tolomei2017interpretable};
+features in the least costly way \citep{tolomei2017interpretable};
 \emph{Gravitational} aims to generate plausible and robust
 counterfactuals by minimising the distance to observed samples in the
-target class \autocite{altmeyer2023endogenous}; \emph{Greedy} aims to
+target class \citep{altmeyer2023endogenous}; \emph{Greedy} aims to
 generate plausible counterfactuals by implicitly minimising predictive
-uncertainty of Bayesian classifiers \autocite{schut2021generating};
+uncertainty of Bayesian classifiers \citep{schut2021generating};
 \emph{GrowingSpheres} is model-agnostic, relying solely on identifying
 nearest neighbours of counterfactuals in the target class by gradually
 increasing the search radius and then moving counterfactuals in that
-direction\autocite{laugel2017inversea}; \emph{PROBE} generates
+direction\citep{laugel2017inversea}; \emph{PROBE} generates
 probabilistically robust counterfactuals
-\autocite{pawelczyk2022probabilistically}; \emph{REVISE} addresses the
-need for plausibility by searching counterfactuals in the latent
-embedding of a Variational Autoencoder (VAE)
-\autocite{joshi2019realistic}; \emph{Wachter} is the baseline approach
-that only penalises the distance to the original sample
-\autocite{wachter2017counterfactual}.
+\citep{pawelczyk2022probabilistically}; \emph{REVISE} addresses the need
+for plausibility by searching counterfactuals in the latent embedding of
+a Variational Autoencoder (VAE) \citep{joshi2019realistic};
+\emph{Wachter} is the baseline approach that only penalises the distance
+to the original sample \citep{wachter2017counterfactual}.
 
 \hypertarget{tbl-gen}{}
 \begin{longtable}[]{@{}
@@ -669,24 +663,21 @@ Composable
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-ClaPROAR \autocite{altmeyer2023endogenous} & gradient based & feature &
+ClaPROAR \citep{altmeyer2023endogenous} & gradient based & feature &
 yes \\
-CLUE \autocite{antoran2020getting} & gradient based & latent & yes \\
-DiCE \autocite{mothilal2020explaining} & gradient based & feature &
-yes \\
-FeatureTweak \autocite{tolomei2017interpretable} & tree based & feature
-& no \\
-Gravitational \autocite{altmeyer2023endogenous} & gradient based &
-feature & yes \\
-Greedy \autocite{schut2021generating} & gradient based & feature &
-yes \\
-GrowingSpheres \autocite{laugel2017inversea} & agnostic & feature &
+CLUE \citep{antoran2020getting} & gradient based & latent & yes \\
+DiCE \citep{mothilal2020explaining} & gradient based & feature & yes \\
+FeatureTweak \citep{tolomei2017interpretable} & tree based & feature &
 no \\
-PROBE \autocite{pawelczyk2022probabilistically} & gradient based &
-feature & no \\
-REVISE \autocite{joshi2019realistic} & gradient based & latent & yes \\
-Wachter \autocite{wachter2017counterfactual} & gradient based & feature
+Gravitational \citep{altmeyer2023endogenous} & gradient based & feature
 & yes \\
+Greedy \citep{schut2021generating} & gradient based & feature & yes \\
+GrowingSpheres \citep{laugel2017inversea} & agnostic & feature & no \\
+PROBE \citep{pawelczyk2022probabilistically} & gradient based & feature
+& no \\
+REVISE \citep{joshi2019realistic} & gradient based & latent & yes \\
+Wachter \citep{wachter2017counterfactual} & gradient based & feature &
+yes \\
 \end{longtable}
 
 \hypertarget{data-catalogue}{%
@@ -701,20 +692,19 @@ different domains. Real-world datasets include:
 \begin{itemize}
 \tightlist
 \item
-  Adult Census \autocite{becker1996adult}
+  Adult Census \citep{becker1996adult}
 \item
-  California Housing \autocite{pace1997sparse}
+  California Housing \citep{pace1997sparse}
 \item
-  CIFAR10 \autocite{krizhevsky2009learning}
+  CIFAR10 \citep{krizhevsky2009learning}
 \item
-  German Credit \autocite{hoffman1994german}
+  German Credit \citep{hoffman1994german}
 \item
-  Give Me Some Credit \autocite{kaggle2011give}
+  Give Me Some Credit \citep{kaggle2011give}
 \item
-  MNIST \autocite{lecun1998mnist} and Fashion MNIST
-  \autocite{xiao2017fashion}
+  MNIST \citep{lecun1998mnist} and Fashion MNIST \citep{xiao2017fashion}
 \item
-  UCI defaultCredit \autocite{yeh2009comparisons}
+  UCI defaultCredit \citep{yeh2009comparisons}
 \end{itemize}
 
 Custom datasets can also be easily preprocessed as explained in the
@@ -822,7 +812,7 @@ counterfactuals,
 function that maps the \(L \times K\)-dimensional latent space
 \(\mathcal{Z}\) to the \(L \times D\)-dimensional feature space
 \(\mathcal{X}\) and \(\text{diversity}(\cdot)\) is the penalty proposed
-by \textcite{mothilal2020explaining} that induces diverse sets of
+by \citet{mothilal2020explaining} that induces diverse sets of
 counterfactuals. As in Equation~\ref{eq-solution}, \(\ell\) is the loss
 function, \(M\) is the black-box model, \(t\) is the target class, and
 \(\lambda\) is the strength of the penalty.
@@ -924,7 +914,7 @@ counterfactuals with respect to many of the desiderata mentioned above.
 For example, users may want to infer how costly the provided recourse is
 to individuals. To this end, we can measure the distance of the
 counterfactual from its original value. The API call to compute the
-distance metric defined in \textcite{wachter2017counterfactual}, for
+distance metric defined in \citet{wachter2017counterfactual}, for
 instance, is as simple as \texttt{evaluate(ce;\ measure=distance\_mad)},
 where \texttt{ce} can also be a vector of
 \texttt{CounterfactualExplanation}s.
@@ -978,7 +968,7 @@ learning model compatible with our package:
 
 To demonstrate how this can be done in practice, we will reiterate here
 how native support for \href{https://fluxml.ai/}{\texttt{Flux.jl}}
-\autocite{innes2018flux} deep learning models was enabled.\footnote{Flux
+\citep{innes2018flux} deep learning models was enabled.\footnote{Flux
   models are now natively supported by our package and can be
   instantiated by calling \texttt{FluxModel()}.} Once again we use
 synthetic data for an illustrative example. Code \ref{lst:nn} below
@@ -1055,7 +1045,7 @@ can be done we will consider a simple extension of our
 \texttt{GenericGenerator}. As we have seen above, Counterfactual
 Explanations are not unique. In light of this, we might be interested in
 quantifying the uncertainty around the generated counterfactuals
-\autocite{delaney2021uncertainty}. One idea could be, to use dropout to
+\citep{delaney2021uncertainty}. One idea could be, to use dropout to
 randomly switch features on and off in each iteration. Without dwelling
 further on the merit of this idea, we will now briefly show how this can
 be implemented.
@@ -1135,7 +1125,7 @@ it is time to work through examples involving real-world data.
 \subsection{Give Me Some Credit}\label{give-me-some-credit}}
 
 The \emph{Give Me Some Credit} dataset is one of the tabular real-world
-datasets that ship with the package \autocite{kaggle2011give}. It can be
+datasets that ship with the package \citep{kaggle2011give}. It can be
 used to train a binary classifier to predict whether a borrower is
 likely to experience financial difficulties in the next two years. In
 particular, we have an output variable
@@ -1146,8 +1136,8 @@ determine if potential borrowers should receive credit or not.
 
 For the classification task, we use a Multi-Layer Perceptron with
 dropout regularization. Using the Gravitational generator
-\autocite{altmeyer2023endogenous} we will generate counterfactuals for
-ten randomly chosen individuals that would be denied credit based on our
+\citep{altmeyer2023endogenous} we will generate counterfactuals for ten
+randomly chosen individuals that would be denied credit based on our
 pre-trained model. Concerning the mutability of features, we only impose
 that the \texttt{age} cannot be decreased.
 
@@ -1173,7 +1163,7 @@ would-be borrowers proposed by the Gravitational Generator.}
 
 For our second example, we will look at image data. The MNIST dataset
 contains 60,000 training samples of handwritten digits in the form of
-28x28 pixel grey-scale images \autocite{lecun1998mnist}. Each image is
+28x28 pixel grey-scale images \citep{lecun1998mnist}. Each image is
 associated with a label indicating the digit (0-9) that the image
 represents. The data makes for an interesting case study of CE because
 humans have a good idea of what plausible counterfactuals of digits look
@@ -1236,12 +1226,12 @@ through minimal augmentation. In future work, we would like to
 prioritize the addition of further predictive models and generators.
 Concerning the former, it would be useful to add native support for any
 supervised models built in \texttt{MLJ.jl}, an extensive Machine
-Learning framework for Julia \autocite{blaom2020mlj}. This may also
-involve adding support for regression models as well as additional
+Learning framework for Julia \citep{blaom2020mlj}. This may also involve
+adding support for regression models as well as additional
 non-differentiable models. In terms of counterfactual generators, there
 is a list of recent methodologies that we would like to implement
-including MINT \autocite{karimi2021algorithmic}, ROAR
-\autocite{upadhyay2021robust} and FACE \autocite{poyiadzi2020face}.
+including MINT \citep{karimi2021algorithmic}, ROAR
+\citep{upadhyay2021robust} and FACE \citep{poyiadzi2020face}.
 
 \hypertarget{additional-datasets}{%
 \subsection{Additional datasets}\label{additional-datasets}}
@@ -1250,10 +1240,10 @@ For benchmarking and testing purposes it will be crucial to add more
 datasets to our library. We have so far prioritized tabular datasets
 that have typically been used in the literature on counterfactual
 explanations including \emph{Adult}, \emph{Give Me Some Credit} and
-\emph{German Credit} \autocite{karimi2020survey}. There is scope for
-adding data sources that have so far not been explored much in this
-context including additional image datasets as well as audio, natural
-language and time-series data.
+\emph{German Credit} \citep{karimi2020survey}. There is scope for adding
+data sources that have so far not been explored much in this context
+including additional image datasets as well as audio, natural language
+and time-series data.
 
 \hypertarget{sec-conclude}{%
 \section{Concluding remarks}\label{sec-conclude}}
@@ -1289,7 +1279,8 @@ partially funded by ICAI AI for Fintech Research, an ING---TU Delft
 collaboration.
 
 
-\printbibliography[title=References]
+\renewcommand\refname{References}
+  \bibliography{ref.bib}
 
 
 \end{document}
