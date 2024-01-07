@@ -35,6 +35,7 @@ contributes:
       cite-method: biblatex       # short-term solution for https://github.com/pat-alt/quarto-juliacon-proceedings/pull/35
       colorlinks: false           # switch of colored links
       block-headings: false       # remove whitespace before section headers
+      indent: 0m
     html:
       css: styles.css
 
