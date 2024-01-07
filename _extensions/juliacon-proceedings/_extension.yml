@@ -33,6 +33,7 @@ contributes:
       pdf-engine: latexmk
       fontfamily: tgtermes
       cite-method: biblatex
+      colorlinks: false
     html:
       css: styles.css
 

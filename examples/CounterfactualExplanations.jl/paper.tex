@@ -1,7 +1,6 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 
 \documentclass{juliacon}
@@ -178,11 +177,7 @@
   pdftitle={Explaining Black-Box Models through Counterfactuals},
   pdfkeywords={Julia, Explainable Artificial
 Intelligence, Counterfactual Explanations, Algorithmic Recourse},
-  colorlinks=true,
-  linkcolor={blue},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={Blue},
+  hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 
@@ -199,18 +194,20 @@ Intelligence, Counterfactual Explanations, Algorithmic Recourse},
 % Abstract
 \begin{abstract}
 
-We present \texttt{CounterfactualExplanations.jl}: a package for
-generating Counterfactual Explanations (CE) and Algorithmic Recourse
-(AR) for black-box models in Julia. CE explain how inputs into a model
-need to change to yield specific model predictions. Explanations that
-involve realistic and actionable changes can be used to provide AR: a
-set of proposed actions for individuals to change an undesirable outcome
-for the better. In this article, we discuss the usefulness of CE for
-Explainable Artificial Intelligence and demonstrate the functionality of
-our package. The package is straightforward to use and designed with a
-focus on customization and extensibility. We envision it to one day be
-the go-to place for explaining arbitrary predictive models in Julia
-through a diverse suite of counterfactual generators.
+We present
+\href{https://github.com/JuliaTrustworthyAI/CounterfactualExplanations.jl}{\texttt{CounterfactualExplanations.jl}}:
+a package for generating Counterfactual Explanations (CE) and
+Algorithmic Recourse (AR) for black-box models in Julia. CE explain how
+inputs into a model need to change to yield specific model predictions.
+Explanations that involve realistic and actionable changes can be used
+to provide AR: a set of proposed actions for individuals to change an
+undesirable outcome for the better. In this article, we discuss the
+usefulness of CE for Explainable Artificial Intelligence and demonstrate
+the functionality of our package. The package is straightforward to use
+and designed with a focus on customization and extensibility. We
+envision it to one day be the go-to place for explaining arbitrary
+predictive models in Julia through a diverse suite of counterfactual
+generators.
 \end{abstract}
 
 % Keywords
@@ -228,7 +225,7 @@ Intelligence, Counterfactual Explanations, Algorithmic Recourse},
 
 \setcounter{page}{1}
 
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, enhanced, frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, interior hidden, frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners, boxrule=0pt]}{\end{tcolorbox}}\fi
 
 \setstretch{1}
 \hypertarget{sec-intro}{%
