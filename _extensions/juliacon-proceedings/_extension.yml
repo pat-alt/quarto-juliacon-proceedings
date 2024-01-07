@@ -32,8 +32,9 @@ contributes:
         \definecolor{mypink}{RGB}{219, 48, 122}
       pdf-engine: latexmk
       fontfamily: tgtermes
-      cite-method: biblatex
-      colorlinks: false
+      cite-method: biblatex       # short-term solution for https://github.com/pat-alt/quarto-juliacon-proceedings/pull/35
+      colorlinks: false           # switch of colored links
+      block-headings: false       # remove whitespace before section headers
     html:
       css: styles.css
 
