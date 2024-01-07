@@ -1,0 +1,293 @@
+\begin{thebibliography}{10}
+
+\bibitem{altmeyer2023endogenous}
+Patrick Altmeyer, Giovan Angela, Aleksander Buszydlik, Karol Dobiczek, Arie van
+  Deursen, and Cynthia Liem.
+Endogenous {Macrodynamics} in {Algorithmic} {Recourse}.
+In {\em First {IEEE} {Conference} on {Secure} and {Trustworthy} {Machine}
+  {Learning}}, 2023.
+\href{http://dx.doi.org/10.1109/satml54575.2023.00036}{doi:10.1109/satml54575.2023.00036}.
+
+\bibitem{antoran2020getting}
+Javier Antor{\'a}n, Umang Bhatt, Tameem Adel, Adrian Weller, and
+  Jos{\'e}~Miguel Hern{\'a}ndez-Lobato.
+Getting a clue: {{A}} method for explaining uncertainty estimates.
+arxiv:\href{http://arxiv.org/abs/2006.06848}{2006.06848}.
+2020.
+
+\bibitem{arrieta2020explainable}
+Alejandro~Barredo Arrieta, Natalia Diaz-Rodriguez, Javier Del~Ser, Adrien
+  Bennetot, Siham Tabik, Alberto Barbado, Salvador Garcia, Sergio Gil-Lopez,
+  Daniel Molina, Richard Benjamins, et~al.
+Explainable {{Artificial Intelligence}} ({{XAI}}): {{Concepts}}, taxonomies,
+  opportunities and challenges toward responsible {{AI}}.
+{\em Information Fusion}, 58:82--115, 2020.
+\href{http://dx.doi.org/10.1016/j.inffus.2019.12.012}{doi:10.1016/j.inffus.2019.12.012}.
+
+\bibitem{becker1996adult}
+Ronny~Kohavi Barry~Becker.
+Adult.
+\href{http://dx.doi.org/10.24432/C5XW20}{doi:10.24432/C5XW20}.
+Type: dataset.
+
+\bibitem{blaom2020mlj}
+Anthony~D. Blaom, Franz Kiraly, Thibaut Lienart, Yiannis Simillides, Diego
+  Arenas, and Sebastian~J. Vollmer.
+{{MLJ}}: {{A Julia}} package for composable machine learning.
+{\em Journal of Open Source Software}, 5(55):2704, November 2020.
+\href{http://dx.doi.org/10.21105/joss.02704}{doi:10.21105/joss.02704}.
+
+\bibitem{borch2022machine}
+Christian Borch.
+Machine learning, knowledge risk, and principal-agent problems in automated
+  trading.
+{\em Technology in Society}, page 101852, 2022.
+\href{http://dx.doi.org/10.1016/j.techsoc.2021.101852}{doi:10.1016/j.techsoc.2021.101852}.
+
+\bibitem{buolamwini2018gender}
+Joy Buolamwini and Timnit Gebru.
+Gender shades: {{Intersectional}} accuracy disparities in commercial gender
+  classification.
+In {\em Conference on Fairness, Accountability and Transparency}, pages 77--91.
+  {PMLR}, 2018.
+
+\bibitem{dandl2023counterfactuals}
+Susanne Dandl, Andreas Hofheinz, Martin Binder, Bernd Bischl, and Giuseppe
+  Casalicchio.
+counterfactuals: {An} {R} {Package} for {Counterfactual} {Explanation}
+  {Methods}.
+Technical report, arXiv.
+arXiv:2304.06569 [cs, stat] type: article.
+
+\bibitem{delaney2021uncertainty}
+Eoin Delaney, Derek Greene, and Mark~T. Keane.
+Uncertainty {Estimation} and {Out}-of-{Distribution} {Detection} for
+  {Counterfactual} {Explanations}: {Pitfalls} and {Solutions}.
+Technical report, arXiv.
+arXiv:2107.09734 [cs] type: article.
+
+\bibitem{fan2020interpretability}
+Fenglei Fan, Jinjun Xiong, and Ge~Wang.
+On interpretability of artificial neural networks.
+arxiv:\href{http://arxiv.org/abs/2001.02522}{2001.02522}.
+2020.
+
+\bibitem{goodfellow2014explaining}
+Ian~J Goodfellow, Jonathon Shlens, and Christian Szegedy.
+Explaining and harnessing adversarial examples.
+arxiv:\href{http://arxiv.org/abs/1412.6572}{1412.6572}.
+2014.
+
+\bibitem{hoffman1994german}
+Hans Hoffman.
+German {{Credit Data}}, 1994.
+
+\bibitem{innes2018flux}
+Mike Innes.
+Flux: {{Elegant}} machine learning with {{Julia}}.
+{\em Journal of Open Source Software}, 3(25):602, 2018.
+\href{http://dx.doi.org/10.21105/joss.00602}{doi:10.21105/joss.00602}.
+
+\bibitem{joshi2019realistic}
+Shalmali Joshi, Oluwasanmi Koyejo, Warut Vijitbenjaronk, Been Kim, and Joydeep
+  Ghosh.
+Towards realistic individual recourse and actionable explanations in black-box
+  decision making systems.
+arxiv:\href{http://arxiv.org/abs/1907.09615}{1907.09615}.
+2019.
+
+\bibitem{kaggle2011give}
+Kaggle.
+Give me some credit, {{Improve}} on the state of the art in credit scoring by
+  predicting the probability that somebody will experience financial distress
+  in the next two years., 2011.
+
+\bibitem{karimi2020survey}
+Amir-Hossein Karimi, Gilles Barthe, Bernhard Sch{\"o}lkopf, and Isabel Valera.
+A survey of algorithmic recourse: Definitions, formulations, solutions, and
+  prospects.
+arxiv:\href{http://arxiv.org/abs/2010.04050}{2010.04050}.
+2020.
+
+\bibitem{karimi2021algorithmic}
+Amir-Hossein Karimi, Bernhard Sch{\"o}lkopf, and Isabel Valera.
+Algorithmic recourse: From counterfactual explanations to interventions.
+In {\em Proceedings of the 2021 {{ACM Conference}} on {{Fairness}},
+  {{Accountability}}, and {{Transparency}}}, pages 353--362, 2021.
+
+\bibitem{karimi2020algorithmic}
+Amir-Hossein Karimi, Julius Von~K{\"u}gelgen, Bernhard Sch{\"o}lkopf, and
+  Isabel Valera.
+Algorithmic recourse under imperfect causal knowledge: A probabilistic
+  approach.
+arxiv:\href{http://arxiv.org/abs/2006.06831}{2006.06831}.
+2020.
+
+\bibitem{kaur2020interpreting}
+Harmanpreet Kaur, Harsha Nori, Samuel Jenkins, Rich Caruana, Hanna Wallach, and
+  Jennifer Wortman~Vaughan.
+Interpreting interpretability: Understanding data scientists' use of
+  interpretability tools for machine learning.
+In {\em Proceedings of the 2020 {{CHI}} Conference on Human Factors in
+  Computing Systems}, pages 1--14, 2020.
+\href{http://dx.doi.org/10.1145/3313831.3376219}{doi:10.1145/3313831.3376219}.
+
+\bibitem{krizhevsky2009learning}
+A.~Krizhevsky.
+Learning {Multiple} {Layers} of {Features} from {Tiny} {Images}.
+
+\bibitem{lakshminarayanan2016simple}
+Balaji Lakshminarayanan, Alexander Pritzel, and Charles Blundell.
+Simple and scalable predictive uncertainty estimation using deep ensembles.
+arxiv:\href{http://arxiv.org/abs/1612.01474}{1612.01474}.
+2016.
+
+\bibitem{laugel2017inversea}
+Thibault Laugel, Marie-Jeanne Lesot, Christophe Marsala, Xavier Renard, and
+  Marcin Detyniecki.
+Inverse {Classification} for {Comparison}-based {Interpretability} in {Machine}
+  {Learning}.
+Technical report, arXiv.
+\href{http://dx.doi.org/10.48550/arXiv.1712.08443}{doi:10.48550/arXiv.1712.08443}.
+arXiv:1712.08443 [cs, stat] type: article.
+
+\bibitem{lecun1998mnist}
+Yann LeCun.
+The {{MNIST}} database of handwritten digits.
+1998.
+
+\bibitem{miller2019explanation}
+Tim Miller.
+Explanation in artificial intelligence: {{Insights}} from the social sciences.
+{\em Artificial intelligence}, 267:1--38, 2019.
+\href{http://dx.doi.org/10.1016/j.artint.2018.07.007}{doi:10.1016/j.artint.2018.07.007}.
+
+\bibitem{molnar2020interpretable}
+Christoph Molnar.
+{\em Interpretable Machine Learning}.
+{Lulu. com}, 2020.
+
+\bibitem{mothilal2020explaining}
+Ramaravind~K Mothilal, Amit Sharma, and Chenhao Tan.
+Explaining machine learning classifiers through diverse counterfactual
+  explanations.
+In {\em Proceedings of the 2020 {{Conference}} on {{Fairness}},
+  {{Accountability}}, and {{Transparency}}}, pages 607--617, 2020.
+\href{http://dx.doi.org/10.1145/3351095.3372850}{doi:10.1145/3351095.3372850}.
+
+\bibitem{oneil2016weapons}
+Cathy O'Neil.
+{\em Weapons of Math Destruction: {{How}} Big Data Increases Inequality and
+  Threatens Democracy}.
+{Crown}, 2016.
+
+\bibitem{pace1997sparse}
+R~Kelley Pace and Ronald Barry.
+Sparse spatial autoregressions.
+{\em Statistics \& Probability Letters}, 33(3):291--297, 1997.
+\href{http://dx.doi.org/10.1016/s0167-7152(96)00140-x}{doi:10.1016/s0167-7152(96)00140-x}.
+
+\bibitem{pawelczyk2021carla}
+Martin Pawelczyk, Sascha Bielawski, Johannes van~den Heuvel, Tobias Richter,
+  and Gjergji Kasneci.
+Carla: A python library to benchmark algorithmic recourse and counterfactual
+  explanation algorithms.
+arxiv:\href{http://arxiv.org/abs/2108.00783}{2108.00783}.
+2021.
+
+\bibitem{pawelczyk2022probabilistically}
+Martin Pawelczyk, Teresa Datta, Johannes van-den Heuvel, Gjergji Kasneci, and
+  Himabindu Lakkaraju.
+Probabilistically {Robust} {Recourse}: {Navigating} the {Trade}-offs between
+  {Costs} and {Robustness} in {Algorithmic} {Recourse}.
+{\em arXiv preprint arXiv:2203.06768}, 2022.
+
+\bibitem{poyiadzi2020face}
+Rafael Poyiadzi, Kacper Sokol, Raul Santos-Rodriguez, Tijl De~Bie, and Peter
+  Flach.
+{{FACE}}: {{Feasible}} and actionable counterfactual explanations.
+In {\em Proceedings of the {{AAAI}}/{{ACM Conference}} on {{AI}}, {{Ethics}},
+  and {{Society}}}, pages 344--350, 2020.
+
+\bibitem{rudin2019stop}
+Cynthia Rudin.
+Stop explaining black box machine learning models for high stakes decisions and
+  use interpretable models instead.
+{\em Nature Machine Intelligence}, 1(5):206--215, 2019.
+\href{http://dx.doi.org/10.1038/s42256-019-0048-x}{doi:10.1038/s42256-019-0048-x}.
+
+\bibitem{schut2021generating}
+Lisa Schut, Oscar Key, Rory Mc~Grath, Luca Costabello, Bogdan Sacaleanu, Yarin
+  Gal, et~al.
+Generating {{Interpretable Counterfactual Explanations By Implicit
+  Minimisation}} of {{Epistemic}} and {{Aleatoric Uncertainties}}.
+In {\em International {{Conference}} on {{Artificial Intelligence}} and
+  {{Statistics}}}, pages 1756--1764. {PMLR}, 2021.
+
+\bibitem{slack2021counterfactual}
+Dylan Slack, Anna Hilgard, Himabindu Lakkaraju, and Sameer Singh.
+Counterfactual explanations can be manipulated.
+{\em Advances in Neural Information Processing Systems}, 34, 2021.
+
+\bibitem{slack2020fooling}
+Dylan Slack, Sophie Hilgard, Emily Jia, Sameer Singh, and Himabindu Lakkaraju.
+Fooling lime and shap: {{Adversarial}} attacks on post hoc explanation methods.
+In {\em Proceedings of the {{AAAI}}/{{ACM Conference}} on {{AI}}, {{Ethics}},
+  and {{Society}}}, pages 180--186, 2020.
+
+\bibitem{tolomei2017interpretable}
+Gabriele Tolomei, Fabrizio Silvestri, Andrew Haines, and Mounia Lalmas.
+Interpretable {Predictions} of {Tree}-based {Ensembles} via {Actionable}
+  {Feature} {Tweaking}.
+In {\em Proceedings of the 23rd {ACM} {SIGKDD} {International} {Conference} on
+  {Knowledge} {Discovery} and {Data} {Mining}}, pages 465--474.
+\href{http://dx.doi.org/10.1145/3097983.3098039}{doi:10.1145/3097983.3098039}.
+arXiv:1706.06691 [stat].
+
+\bibitem{upadhyay2021robust}
+Sohini Upadhyay, Shalmali Joshi, and Himabindu Lakkaraju.
+Towards {{Robust}} and {{Reliable Algorithmic Recourse}}.
+arxiv:\href{http://arxiv.org/abs/2102.13620}{2102.13620}.
+2021.
+
+\bibitem{ustun2019actionable}
+Berk Ustun, Alexander Spangher, and Yang Liu.
+Actionable recourse in linear classification.
+In {\em Proceedings of the {{Conference}} on {{Fairness}}, {{Accountability}},
+  and {{Transparency}}}, pages 10--19, 2019.
+\href{http://dx.doi.org/10.1145/3287560.3287566}{doi:10.1145/3287560.3287566}.
+
+\bibitem{varshney2022trustworthy}
+Kush~R. Varshney.
+{\em Trustworthy {{Machine Learning}}}.
+{Independently Published}, {Chappaqua, NY, USA}, 2022.
+
+\bibitem{verma2020counterfactual}
+Sahil Verma, John Dickerson, and Keegan Hines.
+Counterfactual explanations for machine learning: {{A}} review.
+arxiv:\href{http://arxiv.org/abs/2010.10596}{2010.10596}.
+2020.
+
+\bibitem{wachter2017counterfactual}
+Sandra Wachter, Brent Mittelstadt, and Chris Russell.
+Counterfactual explanations without opening the black box: {{Automated}}
+  decisions and the {{GDPR}}.
+{\em Harv. JL \& Tech.}, 31:841, 2017.
+\href{http://dx.doi.org/10.2139/ssrn.3063289}{doi:10.2139/ssrn.3063289}.
+
+\bibitem{xiao2017fashion}
+Han Xiao, Kashif Rasul, and Roland Vollgraf.
+Fashion-{MNIST}: a {Novel} {Image} {Dataset} for {Benchmarking} {Machine}
+  {Learning} {Algorithms}.
+Technical report, arXiv.
+\href{http://dx.doi.org/10.48550/arXiv.1708.07747}{doi:10.48550/arXiv.1708.07747}.
+arXiv:1708.07747 [cs, stat] type: article.
+
+\bibitem{yeh2009comparisons}
+I-Cheng Yeh and Che-hui Lien.
+The comparisons of data mining techniques for the predictive accuracy of
+  probability of default of credit card clients.
+{\em Expert systems with applications}, 36(2):2473--2480, 2009.
+\href{http://dx.doi.org/10.1016/j.eswa.2007.12.020}{doi:10.1016/j.eswa.2007.12.020}.
+
+\end{thebibliography}

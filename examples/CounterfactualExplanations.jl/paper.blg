@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: paper.aux
+The style file: juliacon.bst.bst
+Database file #1: ref.bib
+Warning--empty note in antoran2020getting
+Warning--empty year in dandl2023counterfactuals
+Warning--empty year in delaney2021uncertainty
+Warning--empty note in fan2020interpretability
+Warning--empty note in goodfellow2014explaining
+Warning--empty note in joshi2019realistic
+Warning--empty note in karimi2020survey
+Warning--empty note in karimi2020algorithmic
+Warning--empty booktitle in krizhevsky2009learning
+Warning--empty year in krizhevsky2009learning
+Warning--empty note in lakshminarayanan2016simple
+Warning--empty year in laugel2017inversea
+Warning--empty journal in lecun1998mnist
+Warning--empty note in pawelczyk2021carla
+Warning--empty year in tolomei2017interpretable
+Warning--empty note in upadhyay2021robust
+Warning--empty note in verma2020counterfactual
+Warning--empty year in xiao2017fashion
+You've used 43 entries,
+            2314 wiz_defined-function locations,
+            753 strings with 13131 characters,
+and the built_in function-call counts, 15495 in all, are:
+= -- 1516
+> -- 832
+< -- 10
++ -- 332
+- -- 286
+* -- 1102
+:= -- 2594
+add.period$ -- 160
+call.type$ -- 43
+change.case$ -- 271
+chr.to.int$ -- 0
+cite$ -- 61
+duplicate$ -- 576
+empty$ -- 1155
+format.name$ -- 286
+if$ -- 3253
+int.to.chr$ -- 0
+int.to.str$ -- 43
+missing$ -- 29
+newline$ -- 247
+num.names$ -- 86
+pop$ -- 330
+preamble$ -- 1
+purify$ -- 227
+quote$ -- 0
+skip$ -- 419
+stack$ -- 0
+substring$ -- 646
+swap$ -- 126
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 166
+warning$ -- 18
+while$ -- 127
+width$ -- 45
+write$ -- 498
+(There were 18 warnings)
