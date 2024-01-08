@@ -7,12 +7,12 @@ contributes:
     common:
       toc: false
       number-sections: true
-      filters:
-        - juliacon-proceedings.lua
       code-line-numbers: true
       linestretch: 1
       link-citations: true
     pdf:
+      filters:
+        - juliacon-proceedings.lua
       include-in-header: header.tex
       template-partials:
         - "partials/title.tex"
@@ -37,5 +37,6 @@ contributes:
       block-headings: false       # remove whitespace before section headers
       indent: 0m
     html:
-      css: styles.css
+      toc: true
+      theme: [default, custom.scss]
 
