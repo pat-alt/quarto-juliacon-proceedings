@@ -102,7 +102,9 @@ plot(x, y)
 
 # Current Limitations
 
-Support for executable listings is only available in the development version of Quarto (version $\geq$ 1.4.0). It is currently not clear how to support custom formatting, for example through the existing `jlcode.sty` environment. 
+- Support for executable listings is only available in the latest version of Quarto (version $\geq$ 1.4.0).
+- It is currently not clear how to support custom formatting, for example through the existing `jlcode.sty` environment. 
+- Cross-referencing listings does not seem to work in HTML output.
 
 :::
 
@@ -168,7 +170,7 @@ As with code, there are various options to present tables. Using standard Markdo
 
 ## Markdown Tables
 
-Markdown tables are rendered to LaTeX using the `booktabs` package. This is the recommended way to create tables because it is compatible with various output formats. Tables can be cross-referenced and the table caption will be rendered as a LaTeX table caption. 
+Markdown tables are rendered to LaTeX using the `booktabs` package. This is the recommended way to create tables because it is compatible with various output formats. Tables can be cross-referenced as `@tbl-1` which renders as @tbl-1.
 
 ```
 
@@ -182,13 +184,13 @@ Markdown tables are rendered to LaTeX using the `booktabs` package. This is the 
 
 ```
 
-<!-- | Default | Left | Right | Center |
+| Default | Left | Right | Center |
 |---------|:-----|------:|:------:|
 | 12      | 12   |    12 |   12   |
 | 123     | 123  |   123 |  123   |
 | 1       | 1    |     1 |   1    |
 
-: Demonstration of pipe table syntax {#tbl-1} -->
+: Demonstration of pipe table syntax {#tbl-1}
 
 ::: {.callout-note}
 
@@ -200,10 +202,10 @@ This seems to currently mess with executable listing (@sec-executable-listings).
 
 ## LaTeX Tables
 
-Standard LaTeX syntax can also be used to create tables. To use standard Quarto cross-referencing, the LaTeX syntax needs to be wrapped in a `div` with the `tbl` class. The table caption can be added as a paragraph. The following creates @tbl-1 which can be cross-referenced as `@tbl-1`.
+Standard LaTeX syntax can also be used to create tables. To use standard Quarto cross-referencing, the LaTeX syntax needs to be wrapped in a `div` with the `tbl` class. The table caption can be added as a paragraph. The following creates @tbl-2 which can be cross-referenced as `@tbl-2`.
 
 ```
-::: {#tbl-1}
+::: {#tbl-2}
 
 \begin{tabular}{|l|l|}\hline
 Age & Frequency \\ \hline
@@ -217,7 +219,7 @@ This is a table caption.
 :::
 ```
 
-::: {#tbl-1}
+::: {#tbl-2}
 
 \begin{tabular}{|l|l|}\hline
 Age & Frequency \\ \hline

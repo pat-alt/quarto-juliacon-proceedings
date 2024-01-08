@@ -57,14 +57,61 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../_extensions/juliacon-proceedings/styles.css">
 </head>
 
 <body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper.pdf"><i class="bi bi-file-pdf"></i>PDF (juliacon-proceedings)</a></li></ul></div></div>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link active" data-scroll-target="#sec-intro"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#sec-related" id="toc-sec-related" class="nav-link" data-scroll-target="#sec-related"><span class="header-section-number">2</span> Background and related work</a>
+  <ul class="collapse">
+  <li><a href="#literature-on-explainable-ai" id="toc-literature-on-explainable-ai" class="nav-link" data-scroll-target="#literature-on-explainable-ai"><span class="header-section-number">2.1</span> Literature on Explainable AI</a></li>
+  <li><a href="#sec-method" id="toc-sec-method" class="nav-link" data-scroll-target="#sec-method"><span class="header-section-number">2.2</span> A framework for Counterfactual Explanations</a></li>
+  <li><a href="#existing-software" id="toc-existing-software" class="nav-link" data-scroll-target="#existing-software"><span class="header-section-number">2.3</span> Existing software</a></li>
+  </ul></li>
+  <li><a href="#sec-arch" id="toc-sec-arch" class="nav-link" data-scroll-target="#sec-arch"><span class="header-section-number">3</span> Introducing: <code>CounterfactualExplanations.jl</code></a>
+  <ul class="collapse">
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models"><span class="header-section-number">3.1</span> Models</a></li>
+  <li><a href="#sec-gen" id="toc-sec-gen" class="nav-link" data-scroll-target="#sec-gen"><span class="header-section-number">3.2</span> Generators</a></li>
+  <li><a href="#data-catalogue" id="toc-data-catalogue" class="nav-link" data-scroll-target="#data-catalogue"><span class="header-section-number">3.3</span> Data Catalogue</a></li>
+  <li><a href="#plotting" id="toc-plotting" class="nav-link" data-scroll-target="#plotting"><span class="header-section-number">3.4</span> Plotting</a></li>
+  </ul></li>
+  <li><a href="#sec-use" id="toc-sec-use" class="nav-link" data-scroll-target="#sec-use"><span class="header-section-number">4</span> Basic Usage</a>
+  <ul class="collapse">
+  <li><a href="#sec-simple" id="toc-sec-simple" class="nav-link" data-scroll-target="#sec-simple"><span class="header-section-number">4.1</span> A Simple Generic Generator</a></li>
+  <li><a href="#sec-gen-comp" id="toc-sec-gen-comp" class="nav-link" data-scroll-target="#sec-gen-comp"><span class="header-section-number">4.2</span> Composing Generators</a></li>
+  <li><a href="#sec-mut" id="toc-sec-mut" class="nav-link" data-scroll-target="#sec-mut"><span class="header-section-number">4.3</span> Mutability Constraints</a></li>
+  <li><a href="#sec-eval" id="toc-sec-eval" class="nav-link" data-scroll-target="#sec-eval"><span class="header-section-number">4.4</span> Evaluation and Benchmarking</a></li>
+  </ul></li>
+  <li><a href="#sec-custom" id="toc-sec-custom" class="nav-link" data-scroll-target="#sec-custom"><span class="header-section-number">5</span> Customization and Extensibility</a>
+  <ul class="collapse">
+  <li><a href="#sec-custom-mod" id="toc-sec-custom-mod" class="nav-link" data-scroll-target="#sec-custom-mod"><span class="header-section-number">5.1</span> Adding Custom Models</a></li>
+  <li><a href="#sec-custom-gen" id="toc-sec-custom-gen" class="nav-link" data-scroll-target="#sec-custom-gen"><span class="header-section-number">5.2</span> Adding Custom Generators</a>
+  <ul class="collapse">
+  <li><a href="#a-generator-with-dropout" id="toc-a-generator-with-dropout" class="nav-link" data-scroll-target="#a-generator-with-dropout"><span class="header-section-number">5.2.1</span> A Generator with Dropout</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sec-emp" id="toc-sec-emp" class="nav-link" data-scroll-target="#sec-emp"><span class="header-section-number">6</span> A Real-World Examples</a>
+  <ul class="collapse">
+  <li><a href="#give-me-some-credit" id="toc-give-me-some-credit" class="nav-link" data-scroll-target="#give-me-some-credit"><span class="header-section-number">6.1</span> Give Me Some Credit</a></li>
+  <li><a href="#mnist" id="toc-mnist" class="nav-link" data-scroll-target="#mnist"><span class="header-section-number">6.2</span> MNIST</a></li>
+  </ul></li>
+  <li><a href="#sec-outlook" id="toc-sec-outlook" class="nav-link" data-scroll-target="#sec-outlook"><span class="header-section-number">7</span> Discussion and Outlook</a>
+  <ul class="collapse">
+  <li><a href="#candidate-models-and-generators" id="toc-candidate-models-and-generators" class="nav-link" data-scroll-target="#candidate-models-and-generators"><span class="header-section-number">7.1</span> Candidate models and generators</a></li>
+  <li><a href="#additional-datasets" id="toc-additional-datasets" class="nav-link" data-scroll-target="#additional-datasets"><span class="header-section-number">7.2</span> Additional datasets</a></li>
+  </ul></li>
+  <li><a href="#sec-conclude" id="toc-sec-conclude" class="nav-link" data-scroll-target="#sec-conclude"><span class="header-section-number">8</span> Concluding remarks</a></li>
+  <li><a href="#sec-ack" id="toc-sec-ack" class="nav-link" data-scroll-target="#sec-ack"><span class="header-section-number">9</span> Acknowledgements</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">10</span> References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper.pdf"><i class="bi bi-file-pdf"></i>PDF (juliacon-proceedings)</a></li></ul></div></nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">

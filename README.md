@@ -11,7 +11,15 @@ This template is based on the existing [JuliaCon Proceedings LaTeX template](htt
 
 ### More Examples
 
-The `/examples/` folder contains additional examples. Currently, it contains a Quarto version of my JuliaCon Proceedings paper *Explaining Black-Box Models through Counterfactuals*. The rendered [PDF](https://www.paltmeyer.com/quarto-juliacon-proceedings/examples/CounterfactualExplanations.jl/paper.pdf) serves as a comparison to the published [version](https://juliacon.github.io/proceedings-papers/jcon.00130/10.21105.jcon.00130.pdf) of the paper. The remaining differences in formatting need to be sorted out here. If you notice any differences, please open an issue. 
+The `/examples/` folder contains additional examples. Currently, it contains a Quarto version of my JuliaCon Proceedings paper *Explaining Black-Box Models through Counterfactuals*. 
+
+#### PDF
+
+The rendered [PDF](https://www.paltmeyer.com/quarto-juliacon-proceedings/examples/CounterfactualExplanations.jl/paper.pdf) serves as a comparison to the published [version](https://juliacon.github.io/proceedings-papers/jcon.00130/10.21105.jcon.00130.pdf) of the paper. The remaining differences in formatting need to be sorted out here. If you notice any differences, please open an issue. 
+
+#### HTML 
+
+Quarto documents can be rendered to multiple output formats, which allows us to produce both PDF and HTML versions of papers from the same source document. The HTML [version](https://www.paltmeyer.com/quarto-juliacon-proceedings/examples/CounterfactualExplanations.jl/paper.html) of the paper is fully themed in Julia colors and fonts. Contrary to PDF, it supports animated and interactive content. 
 
 ### Usage
 
